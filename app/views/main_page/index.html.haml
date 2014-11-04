@@ -1,0 +1,124 @@
+%header#header
+  / header
+  .header_top
+    / header_top
+    .container
+      .row
+        .col-sm-6
+          .contactinfo
+            %ul.nav.nav-pills
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-phone
+                  +7 495 555 55 55
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-envelope
+                  info@vash-site.com
+        .col-sm-6
+          .social-icons.pull-right
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-facebook
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-twitter
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-linkedin
+              %li
+                %a{:href => "#"}
+
+                  %i.fa.fa-dribbble
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-google-plus
+  / /header_top
+		
+  .header-middle
+    / header-middle
+    .container
+      .row
+        .col-sm-4
+          .logo.pull-left
+            %a{:href => "index.html"}
+              %img{:alt => "", :src => asset_path("home/logo.png") }/
+
+        .col-sm-8
+          .shop-menu.pull-right
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-user
+                  Главная
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-star
+                  О нас
+              %li
+                %a{:href => "checkout.html"}
+                  %i.fa.fa-crosshairs
+                  Доставка
+              %li
+                %a{:href => "cart.html"}
+                  %i.fa.fa-shopping-cart
+                  Корзина 
+            
+  / /header-middle
+  .header-bottom
+    / header-bottom
+    #nav.container(data-spy="affix" data-offset-top="200")
+      .row
+        .col-sm-9
+          .navbar-header
+            %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %i.fa.fa-dashboard.fa-border.fa-2x
+          .mainmenu.pull-left
+            %ul.nav.navbar-nav.collapse.navbar-collapse
+              %li
+                %a{:href => "index.html"} Home
+              %li.dropdown
+                %a{:href => "#"}
+                  Shop
+                  %i.fa.fa-angle-down
+                %ul.sub-menu{:role => "menu"}
+                  %li
+                    %a{:href => "shop.html"} Products
+                  %li
+                    %a{:href => "product-details.html"} Product Details
+                  %li
+                    %a{:href => "checkout.html"} Checkout
+                  %li
+                    %a{:href => "cart.html"} Cart
+                  %li
+                    %a{:href => "login.html"} Login
+              %li.dropdown
+                %a{:href => "#"}
+                  Blog
+                  %i.fa.fa-angle-down
+                %ul.sub-menu{:role => "menu"}
+                  %li
+                    %a{:href => "blog.html"} Blog List
+                  %li
+                    %a{:href => "blog-single.html"} Blog Single
+              %li
+                %a{:href => "404.html"} 404
+              %li
+                %a{:href => "contact-us.html"} Contact
+        .col-sm-3
+          .shop-menu.pull-right
+            %ul
+              %li
+                %a{:href => "cart.html"}
+                  %i.fa.fa-shopping-cart
+                  Корзина 
+
+%h2
+  = render :partial => "slider"
+
+
+
+
+
