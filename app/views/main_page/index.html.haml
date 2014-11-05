@@ -44,27 +44,10 @@
           .logo.pull-left
             %a{:href => "index.html"}
               %img{:alt => "", :src => asset_path("home/logo.png") }/
-
-        .col-sm-8
-          .shop-menu.pull-right
-            %ul.nav.navbar-nav
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-user
-                  Главная
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-star
-                  О нас
-              %li
-                %a{:href => "checkout.html"}
-                  %i.fa.fa-crosshairs
-                  Доставка
-              %li
-                %a{:href => "cart.html"}
-                  %i.fa.fa-shopping-cart
-                  Корзина 
-            
+        
+   
+         
+        
   / /header-middle
   .header-bottom
     / header-bottom
@@ -78,35 +61,42 @@
           .mainmenu.pull-left
             %ul.nav.navbar-nav.collapse.navbar-collapse
               %li
-                %a{:href => "index.html"} Home
+                %a{:href => "index.html"} Главная
               %li.dropdown
                 %a{:href => "#"}
-                  Shop
+                  Помещение
                   %i.fa.fa-angle-down
                 %ul.sub-menu{:role => "menu"}
                   %li
-                    %a{:href => "shop.html"} Products
+                    %a{:href => "shop.html"} Гостиная
+                 
                   %li
-                    %a{:href => "product-details.html"} Product Details
+                    %a{:href => "checkout.html"} Спальня
                   %li
-                    %a{:href => "checkout.html"} Checkout
+                    %a{:href => "checkout.html"} Кухня
+                  
                   %li
-                    %a{:href => "cart.html"} Cart
+                    %a{:href => "cart.html"} Детская
                   %li
-                    %a{:href => "login.html"} Login
+                    %a{:href => "login.html"} Прихожая
               %li.dropdown
-                %a{:href => "#"}
-                  Blog
+                %a
+                  Тип обоев
                   %i.fa.fa-angle-down
                 %ul.sub-menu{:role => "menu"}
                   %li
-                    %a{:href => "blog.html"} Blog List
+                    %a{:href => "blog.html"} Бумажные
                   %li
-                    %a{:href => "blog-single.html"} Blog Single
+                    %a{:href => "blog-single.html"} Текстильные
+
+                  %li
+                    %a{:href => "blog.html"} Флизелиновые
+                  %li
+                    %a{:href => "blog-single.html"} Виниловые
               %li
-                %a{:href => "404.html"} 404
+                %a{:href => "404.html"} Доставка
               %li
-                %a{:href => "contact-us.html"} Contact
+                %a{:href => "contact-us.html"} О нас
         .col-sm-3
           .shop-menu.pull-right
             %ul
@@ -115,10 +105,10 @@
                   %i.fa.fa-shopping-cart
                   Корзина 
 
-%h2
-  = render :partial => "slider"
 
+= render :partial => "slider"
 
+= render :partial => "left_bar"
 
 
 

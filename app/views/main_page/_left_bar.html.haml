@@ -1,0 +1,150 @@
+%section
+  .container
+    .row
+      .col-sm-3
+        .left-sidebar
+          %h2 Обои
+          #accordian.panel-group.category-products
+            / category-productsr
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#sportswear"}
+                    %span.badge.pull-right
+                      %i.fa.fa-plus
+                    Страны
+              #sportswear.panel-collapse.collapse
+                .panel-body
+                  %ul
+                    %li
+                      %a{:href => "#"} Россия 
+                    %li
+                      %a{:href => "#"} Италия
+                    %li
+                      %a{:href => "#"} Германия
+                    %li
+                      %a{:href => "#"} Бельгия
+                    %li
+                      %a{:href => "#"} США
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#mens"}
+                    %span.badge.pull-right
+                      %i.fa.fa-plus
+                    Производители/Бренды
+              #mens.panel-collapse.collapse
+                .panel-body
+                  %ul
+                    %li
+                      %a{:href => "#"} Fendi
+                    %li
+                      %a{:href => "#"} Guess
+                    %li
+                      %a{:href => "#"} Valentino
+                    %li
+                      %a{:href => "#"} Dior
+                    %li
+                      %a{:href => "#"} Versace
+                    %li
+                      %a{:href => "#"} Armani
+                    %li
+                      %a{:href => "#"} Prada
+                    %li
+                      %a{:href => "#"} Dolce and Gabbana
+                    %li
+                      %a{:href => "#"} Chanel
+                    %li
+                      %a{:href => "#"} Gucci
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#womens"}
+                    %span.badge.pull-right
+                      %i.fa.fa-plus
+                    По рисунку 
+              #womens.panel-collapse.collapse
+                .panel-body
+                  %ul
+                    %li
+                      %a{:href => "#"} Детский
+                    %li
+                      %a{:href => "#"} Геометрический
+                    %li
+                      %a{:href => "#"} Классический
+                    %li
+                      %a{:href => "#"} Однотонный
+                    %li
+                      %a{:href => "#"} Растительный
+                    %li
+                      %a{:href => "#"} Другой
+                    
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#size"}
+                    %span.badge.pull-right
+                      %i.fa.fa-plus
+                    По размеру
+              #size.panel-collapse.collapse
+                .panel-body
+                  %ul
+                    %li
+                      %a{:href => "#"} 53 см
+                    %li
+                      %a{:href => "#"} 70 см
+                    %li
+                      %a{:href => "#"} 1 метр
+                    
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Kids
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Fashion
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Households
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Interiors
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Clothing
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Bags
+            .panel.panel-default
+              .panel-heading
+                %h4.panel-title
+                  %a{:href => "#"} Shoes
+          / /category-products
+          .brands_products
+            / brands_products
+            %h5 Хозяйке на заметку
+            .col-md-12.master
+              %p 
+                
+                Поверхность стен перед поклейкой обоев должна быть светлой и сухой. Как правило она становится такой через шесть недель после оштукатуривания. Если у Вас возникают сомнения, приклейте к стене клейкой лентой кусок полиэтиленовой пленки 50×50 см на 12 часов.
+                
+
+          / /brands_products
+          .price-range
+            / price-range
+            %h2 Price Range
+            .well.text-center
+              %input#sl2.span2{"data-slider-max" => "600", "data-slider-min" => "0", "data-slider-step" => "5", "data-slider-value" => "[250,450]", :type => "text", :value => ""}
+                %br/
+                %b.pull-left $ 0
+                %b.pull-right $ 600
+          / /price-range
+          .shipping.text-center
+            / shipping
+            %img{:alt => "", :src => "images/home/shipping.jpg"}/
+          / /shipping
