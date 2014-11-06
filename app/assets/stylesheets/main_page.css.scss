@@ -657,6 +657,18 @@ ul.sub-menu {
   
 }
 
+h2.title {
+  color: #FE980F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 auto 30px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index:3;
+}
+
 .left-sidebar h5 {
   
    color: #FE980F;
@@ -721,7 +733,13 @@ h2.title:before{
 	margin-left: -110px;
 }
 
+h2.title:before{
+  overflow: none;
+  }
 
+.left-sidebar a:hover{
+  color: #FE980F;
+  }
 
 
 .category-products .panel {
@@ -843,25 +861,17 @@ h2.title:before{
 }
 
 
+
 .padding-right {
   padding-right: 0;
 }
-
+/*
 .features_items{
 	overflow:hidden;
 }
+*/
 
 
-h2.title {
-  color: #FE980F;
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 15px;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-  position: relative;
-}
 
 .product-image-wrapper{
 	border:1px solid #F7F7F5;
@@ -899,7 +909,9 @@ h2.title {
   font-weight: 400;
   color: #696763;
 }
-
+.product-image{
+  height: 330px;
+  }
 .productinfo img{
   width: 100%;
 }
