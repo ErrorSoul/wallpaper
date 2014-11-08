@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe Product do
   before do
-    @product = Product.new(title: "The best wallpaper",
-                           price: 100.0,
-                           description: "Perhaps, this is the best wallpaper",
-                           marking: "1223mn",
-                           weight: 0.5, 
-                           height: 10.5)
+    @collection = Collection.new(name: "Vinil")
+    @product = @collection.products.build(title: "The best wallpaper",
+                                          price: 100.0,
+                                          description: "Perhaps, this is the best wallpaper",
+                                          marking: "1223mn",
+                                          weight: 0.5, 
+                                          height: 10.5)
   end
 
   subject { @product  }
@@ -17,6 +18,7 @@ describe Product do
   it { should respond_to(:marking)}
   it { should respond_to(:weight)}
   it { should respond_to(:height)}
+  it { should respond_to(:collection_id)}
   
   it { should be_valid }
 

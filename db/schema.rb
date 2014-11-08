@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103185601) do
+ActiveRecord::Schema.define(version: 20141108122402) do
+
+  create_table "collections", force: true do |t|
+    t.string   "name"
+    t.integer  "label_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collections", ["label_id"], name: "index_collections_on_label_id"
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "labels", force: true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "labels", ["country_id"], name: "index_labels_on_country_id"
 
   create_table "products", force: true do |t|
     t.string   "title"
@@ -22,6 +46,9 @@ ActiveRecord::Schema.define(version: 20141103185601) do
     t.string   "marking"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "collection_id"
   end
+
+  add_index "products", ["collection_id"], name: "index_products_on_collection_id"
 
 end

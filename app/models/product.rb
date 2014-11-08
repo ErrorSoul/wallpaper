@@ -6,4 +6,5 @@ class Product < ActiveRecord::Base
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :height, numericality: {greater_than_or_equal_to: 0.01}
   validates :weight, numericality: {greater_than_or_equal_to: 0.01}
+  belongs_to :collection 
 end
