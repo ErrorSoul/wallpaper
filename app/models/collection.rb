@@ -3,6 +3,6 @@ class Collection < ActiveRecord::Base
   has_many :products 
   validates :name, :label_id, presence: true
   validates :name, length: {minimum: 3}
-
+  
 end
 

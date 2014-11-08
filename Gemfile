@@ -37,6 +37,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'faker'
 
+gem 'activeadmin', github: 'activeadmin'
+gem "devise"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -73,13 +75,19 @@ group :development, :test do
  
 
    # Guard
+ 
+  if Time.now > Time.new(2014,11,10)
+    gem 'guard', '~> 2.8'
+  else
+    # Freeze until 2014-11-10 - in case we forget to change back ;)
+    gem 'guard', '= 2.7.3'
+  end
+
   gem 'guard-jasmine'
   gem "guard-bundler", ">= 1.0.0"
   gem "guard-rails", ">= 0.4.0"
   gem "guard-rspec", ">= 2.5.2"
-  gem "rb-inotify", ">= 0.9.0", :require => false
-  gem "rb-fsevent", ">= 0.9.3", :require => false
-  gem "rb-fchange", ">= 0.0.6", :require => false
+  
 
 
 

@@ -1,5 +1,5 @@
 class AddTypeToProduct < ActiveRecord::Migration
   def change
-    add_column :products, :type, :reference
+    add_reference :products, :type, index: true
   end
 end

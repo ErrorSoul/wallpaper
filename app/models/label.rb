@@ -4,6 +4,6 @@ class Label < ActiveRecord::Base
 
   validates :name, :country_id,  presence: true
   validates :name, length: {minimum: 3}
-
+  
   
 end
