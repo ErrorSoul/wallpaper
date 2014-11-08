@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Product do
   before do
-    @collection = Collection.new(name: "Vinil")
+    @country = Country.create(name: "Russia")
+    @label = @country.labels.create(name:"Porshe")
+    @collection = @label.collections.create(name: "Vinil")
     @product = @collection.products.build(title: "The best wallpaper",
                                           price: 100.0,
                                           description: "Perhaps, this is the best wallpaper",
@@ -107,4 +109,9 @@ describe Product do
     it { should be_invalid }
   end
   
+
+  describe "correct save" do 
+    before {@product.save}
+    it {should be_valid}
+  end
 end

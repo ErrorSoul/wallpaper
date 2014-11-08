@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108122402) do
+ActiveRecord::Schema.define(version: 20141108150738) do
 
   create_table "collections", force: true do |t|
     t.string   "name"
@@ -37,18 +37,13 @@ ActiveRecord::Schema.define(version: 20141108122402) do
 
   add_index "labels", ["country_id"], name: "index_labels_on_country_id"
 
-  create_table "products", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.decimal  "price"
-    t.decimal  "weight"
-    t.decimal  "height"
-    t.string   "marking"
+# Could not dump table "products" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "types", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "collection_id"
   end
-
-  add_index "products", ["collection_id"], name: "index_products_on_collection_id"
 
 end
