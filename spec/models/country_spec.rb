@@ -8,6 +8,8 @@ describe Country do
   subject { @country }
   it { should respond_to(:name)}
   it { should respond_to(:labels)}
+  it { should respond_to(:asset)}
+  it { should be_valid }
   
 
   describe "when country name is not present" do
@@ -19,5 +21,17 @@ describe Country do
     before { @country.name = "a" * 2 }
     it {should be_invalid}
   end
- 
+
+  describe "when country name is not unique" do
+    before (:each) do
+      @country.save
+      
+      
+    end
+    it "fff" do
+      @country_new = Country.new(name: "Russia")
+      @country_new.should be_invalid
+  end
+
+  end 
 end

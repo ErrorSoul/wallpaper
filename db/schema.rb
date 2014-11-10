@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108195212) do
+ActiveRecord::Schema.define(version: 20141110142247) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141108195212) do
     t.integer  "label_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "asset"
   end
 
   add_index "collections", ["label_id"], name: "index_collections_on_label_id"
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 20141108195212) do
     t.integer  "country_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "asset"
   end
 
   add_index "labels", ["country_id"], name: "index_labels_on_country_id"
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 20141108195212) do
     t.datetime "updated_at"
     t.integer  "collection_id"
     t.integer  "type_id"
+    t.string   "asset"
   end
 
   add_index "products", ["collection_id"], name: "index_products_on_collection_id"

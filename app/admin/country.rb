@@ -17,6 +17,7 @@ ActiveAdmin.register Country do
         image_tag(x.asset.url)
       end
     end
+  
   column "Последнее изменение", :updated_at
   actions
   end
@@ -26,10 +27,11 @@ ActiveAdmin.register Country do
     f.inputs "Team" do
       f.input :name
       f.input :asset
-      f.input :name , :as => :select , :collection => Label.all
+      #f.input :name , :as => :select , :collection => Label.all
     end
     f.actions
   end
+  
   show do |x|
     attributes_table do
       row "Cтрана" do
@@ -38,6 +40,23 @@ ActiveAdmin.register Country do
       
       row "Картинка" do
           image_tag(x.asset.url)
+      
+      end
+      table_for x.labels do 
+        column "Лейблы", :name  do |z|
+          link_to z.name, admin_label_path(z)
+        end
+        column "Картинка", :asset do |z|
+          div :class => "thumb" do
+        image_tag(z.asset.url)
+      end
+    end
+        
+        # ...
+      end
+
+      row "Создать" do
+        link_to 'Новый Лейбл', new_admin_label_path(:label => { :country_id => country.id })
       end
     end 
   end

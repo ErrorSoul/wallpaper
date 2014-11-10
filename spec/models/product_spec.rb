@@ -10,7 +10,8 @@ describe Product do
                                           description: "Perhaps, this is the best wallpaper",
                                           marking: "1223mn",
                                           weight: 0.5, 
-                                          height: 10.5)
+                                          height: 10.5,
+                                          type_id: 1)
   end
 
   subject { @product  }
@@ -21,6 +22,8 @@ describe Product do
   it { should respond_to(:weight)}
   it { should respond_to(:height)}
   it { should respond_to(:collection_id)}
+  it { should respond_to(:asset) }
+  it { should respond_to(:type_id)}
   
   it { should be_valid }
 
@@ -114,4 +117,19 @@ describe Product do
     before {@product.save}
     it {should be_valid}
   end
+
+
+  #collection_Id
+  
+  describe "without collection_id" do
+    before { @product.collection_id = nil}
+    it {should be_invalid}
+  end
+
+  describe "without type_id" do 
+    before {@product.type_id = nil }
+    it {should be_invalid}
+  end
+
+  
 end

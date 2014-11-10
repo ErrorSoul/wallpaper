@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  validates :title, :description, :marking, presence: true
+  validates :title, :description, :marking,  presence: true
+  validates :type_id, :collection_id, presence: true
   validates  :title,  length: {maximum: 100,
                                minimum: 4}
   validates :marking, length: {maximum: 25, minimum: 3  }
@@ -8,5 +9,6 @@ class Product < ActiveRecord::Base
   validates :weight, numericality: {greater_than_or_equal_to: 0.01}
   belongs_to :collection
   belongs_to :type
+  mount_uploader :asset, AssetUploader
   
 end

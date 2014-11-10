@@ -46,4 +46,13 @@ subject { @label }
     end
     it {should be_valid} 
   end
+
+
+  describe "when name is not uniq" do
+    before do 
+      Label.create!(name: "Porshe", country_id: 1) 
+      @wrong_label = Label.new(name: "Porshe", country_id: 1 )
+    end
+    it {@wrong_label.should be_invalid}
+  end
 end
