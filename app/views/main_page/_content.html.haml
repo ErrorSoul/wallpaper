@@ -130,16 +130,7 @@
                 %i.fa.fa-shopping-cart>
                 В Корзину
           %img.new{:alt => "", :src => asset_path("home/sale.png")}/
-        .choose
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to wishlist
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to compare
+        
     .col-sm-4
       .product-image-wrapper
         .single-products
@@ -168,12 +159,5 @@
                 %i.fa.fa-plus-square>
                 Add to compare
   / features_items
-.price-range
-  / price-range
-  %h2 Price Range
-  .well.text-center
-    %input#sl2.span2{"data-slider-max" => "600", "data-slider-min" => "0", "data-slider-step" => "5", "data-slider-value" => "[250,450]", :type => "text", :value => ""}
-      %br/
-      %b.pull-left $ 0
-      %b.pull-right $ 600
+
 / /price-range

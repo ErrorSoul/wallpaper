@@ -53,7 +53,7 @@
     / header-bottom
     #nav.container(data-spy="affix" data-offset-top="200")
       .row
-        .col-sm-9
+        .col-sm-12
           .navbar-header
             %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
               %span.sr-only Toggle navigation
@@ -64,46 +64,35 @@
                 %a{:href => "index.html"} Главная
               %li.dropdown
                 %a{:href => "#"}
-                  Помещение
+                  Каталог
                   %i.fa.fa-angle-down
                 %ul.sub-menu{:role => "menu"}
-                  %li
-                    %a{:href => "shop.html"} Гостиная
-                 
-                  %li
-                    %a{:href => "checkout.html"} Спальня
-                  %li
-                    %a{:href => "checkout.html"} Кухня
+                  - @type.all.each do |type|
+                    %li
+                      =link_to type.name.mb_chars.capitalize.to_s, admin_country_path(type)
                   
-                  %li
-                    %a{:href => "cart.html"} Детская
-                  %li
-                    %a{:href => "login.html"} Прихожая
-              %li.dropdown
-                %a
-                  Тип обоев
-                  %i.fa.fa-angle-down
-                %ul.sub-menu{:role => "menu"}
-                  %li
-                    %a{:href => "blog.html"} Бумажные
-                  %li
-                    %a{:href => "blog-single.html"} Текстильные
-
-                  %li
-                    %a{:href => "blog.html"} Флизелиновые
-                  %li
-                    %a{:href => "blog-single.html"} Виниловые
+             
               %li
-                %a{:href => "404.html"} Доставка
+                %a{:href => "404.html"} О нас
               %li
-                %a{:href => "contact-us.html"} О нас
-        .col-sm-3
-          .shop-menu.pull-right
-            %ul
+                %a{:href => "contact-us.html"} Доставка и Оплата
+              %li
+                %a{:href => "index.html"} Контакты
               %li
                 %a{:href => "cart.html"}
                   %i.fa.fa-shopping-cart
-                  Корзина 
+                  Корзина
+               
+          .col-sm-3.col-xs-3.pull-right
+            .search_box.pull-right
+              %input(type="text" placeholder="Поиск")
+          
+              
+          
+            
+				
+				
+          
 
 
 = render :partial => "slider"

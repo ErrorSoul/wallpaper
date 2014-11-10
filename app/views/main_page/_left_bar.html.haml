@@ -14,16 +14,9 @@
         #sportswear.panel-collapse.collapse
           .panel-body
             %ul
-              %li
-                %a{:href => "#"} Россия 
-              %li
-                %a{:href => "#"} Италия
-              %li
-                %a{:href => "#"} Германия
-              %li
-                %a{:href => "#"} Бельгия
-              %li
-                %a{:href => "#"} США
+              - @country.each do |c|
+                %li
+                  =link_to c.name.mb_chars.capitalize.to_s, admin_country_path(c)
       .panel.panel-default
         .panel-heading
           %h4.panel-title
@@ -34,26 +27,9 @@
         #mens.panel-collapse.collapse
           .panel-body
             %ul
-              %li
-                %a{:href => "#"} Fendi
-              %li
-                %a{:href => "#"} Guess
-              %li
-                %a{:href => "#"} Valentino
-              %li
-                %a{:href => "#"} Dior
-              %li
-                %a{:href => "#"} Versace
-              %li
-                %a{:href => "#"} Armani
-              %li
-                %a{:href => "#"} Prada
-              %li
-                %a{:href => "#"} Dolce and Gabbana
-              %li
-                %a{:href => "#"} Chanel
-              %li
-                %a{:href => "#"} Gucci
+              - @label.each do |c|
+                %li
+                  =link_to c.name.mb_chars.capitalize.to_s, admin_country_path(c)
       .panel.panel-default
         .panel-heading
           %h4.panel-title

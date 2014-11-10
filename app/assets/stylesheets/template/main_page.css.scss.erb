@@ -13,7 +13,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #F0E7E7;
+  background-color: $cream;
   position: relative;
   font-weight:400px;
 }
@@ -248,7 +248,7 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  background-image: url(../images/home/searchicon.png);
+  background-image: url(asset_path("home/searchicon.png"));
   background-repeat: no-repeat;
   background-position: 130px;
 }
@@ -2560,10 +2560,21 @@ h2.title:before{
     padding-top: 10px;
     z-index: 10;
     
-    background: #FDD9B5;
+    background: $brown;
+    .mainmenu ul li a {
+      color: white;
+      &:hover {
+        color: #FE980F;
+        }
+      }
+
+    .search_box input {
+      height: 25px;
+      }
 
     .shop-menu ul li a {
-      background:  #FDD9B5;
+      background: $brown;
+      color: white;
       }
 }
 

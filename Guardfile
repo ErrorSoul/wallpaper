@@ -2,7 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 
 require 'active_support/inflector'
-
+ENV["GUARD_GEM_SILENCE_DEPRECATIONS"] = 1
 guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },
                :rspec_env    => { 'RAILS_ENV' => 'test' }, :test_unit => false do
   watch('config/application.rb')
