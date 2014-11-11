@@ -2,10 +2,21 @@
 namespace :db do
   desc "Fill database with type of wp"
   task populate: :environment do
+    
     make_types
     fill_base
+    make_admin 
     
   end
+end
+
+def hel 
+  ActionController::Base.helpers
+end
+
+def make_admin
+  AdminUser.create!(email: "admin@example.com",
+                    password: "password")
 end
 
 def make_types
@@ -46,7 +57,7 @@ def make_wallpapers(x)
                        weight: 1,
                        price: Faker::Commerce.price,
                        marking: Faker::Code.isbn,
-                       asset: File.open( "app/assets/images/w/#{w+1}.jpg")
+                       asset: File.open(File.join("app", ActionController::Base.helpers.asset_path("assets/images/w/#{w+1}.jpg")))
                              )
   end
 end
@@ -54,7 +65,7 @@ end
   
 def fill_base
   make_countries.map do |country|
-    country_img = File.open( "app/assets/images/country/#{country}.jpg")
+    country_img = File.open(File.join("app", ActionController::Base.helpers.asset_path("assets/images/country/#{country}.jpg")))
     c = Country.create!(name: country, asset: country_img)
     puts "country", c.name
     make_labels.each do |label|
