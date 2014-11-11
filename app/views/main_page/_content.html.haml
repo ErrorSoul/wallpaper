@@ -29,7 +29,7 @@
                 
                 %h2=  p.price.to_s + " P"
                 %h2
-                  =link_to p.title, admin_collection_path(p.collection.label)
+                  =link_to p.title, product_path(p)
                 %p= p.marking
                 %a.btn.btn-default.add-to-cart{:href => "#"}
                   %i.fa.fa-shopping-cart>

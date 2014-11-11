@@ -1,0 +1,104 @@
+
+.col-sm-3
+  .left-sidebar
+    %h2 Категории
+    #accordian.panel-group.category-products
+      / category-productsr
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#sportswear"}
+              %span.badge.pull-right
+                %i.fa.fa-plus
+              Страны
+        #sportswear.panel-collapse.collapse
+          .panel-body
+            %ul
+              - @country.each do |c|
+                %li
+                  =link_to c.name.mb_chars.capitalize.to_s, admin_country_path(c)
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#mens"}
+              %span.badge.pull-right
+                %i.fa.fa-plus
+              Производители/Бренды
+        #mens.panel-collapse.collapse
+          .panel-body
+            %ul
+              - @label.each do |c|
+                %li
+                  =link_to c.name.mb_chars.capitalize.to_s, admin_country_path(c)
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#womens"}
+              %span.badge.pull-right
+                %i.fa.fa-plus
+              По рисунку 
+        #womens.panel-collapse.collapse
+          .panel-body
+            %ul
+              %li
+                %a{:href => "#"} Детский
+              %li
+                %a{:href => "#"} Геометрический
+              %li
+                %a{:href => "#"} Классический
+              %li
+                %a{:href => "#"} Однотонный
+              %li
+                %a{:href => "#"} Растительный
+              %li
+                %a{:href => "#"} Другой
+              
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#size"}
+              %span.badge.pull-right
+                %i.fa.fa-plus
+              По размеру
+        #size.panel-collapse.collapse
+          .panel-body
+            %ul
+              %li
+                %a{:href => "#"} 53 см
+              %li
+                %a{:href => "#"} 70 см
+              %li
+                %a{:href => "#"} 1 метр
+
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#type"}
+              %span.badge.pull-right
+                %i.fa.fa-plus
+              По типу
+        #type.panel-collapse.collapse
+          .panel-body
+            %ul
+              %li
+                %a{:href => "#"} 53 см
+              %li
+                %a{:href => "#"} 70 см
+              %li
+                %a{:href => "#"} 1 метр
+              
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{:href => "#"} Все бренды
+     
+    .brands_products
+      / brands_products
+      %h5 Хозяйке на заметку
+      .col-md-12.master
+        %p 
+          
+          Поверхность стен перед поклейкой обоев должна быть светлой и сухой. Как правило она становится такой через шесть недель после оштукатуривания. Если у Вас возникают сомнения, приклейте к стене клейкой лентой кусок полиэтиленовой пленки 50×50 см на 12 часов.
+          
+
+

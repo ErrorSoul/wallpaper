@@ -1,5 +1,5 @@
 class MainPageController < ApplicationController
-  respond_to :json, only: :index
+  
   
   before_action :set_need_attr, only: [:index]
   def index

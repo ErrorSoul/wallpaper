@@ -42,7 +42,7 @@
       .row
         .col-sm-4
           .logo.pull-left
-            %a{:href => "index.html"}
+            %a{:href => "/"}
               %img{:alt => "", :src => asset_path("home/logo.png") }/
         
    
@@ -61,9 +61,10 @@
           .mainmenu.pull-left
             %ul.nav.navbar-nav.collapse.navbar-collapse
               %li
-                %a{:href => "index.html"} Главная
+                =link_to "Главная", root_path
               %li.dropdown
                 %a{:href => "#"}
+                
                   Каталог
                   %i.fa.fa-angle-down
                 %ul.sub-menu{:role => "menu"}
