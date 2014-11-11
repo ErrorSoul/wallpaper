@@ -1,163 +1,80 @@
 
-.col-sm-9.padding-right
-  .features_items
+.col-sm-9.padding-right(ng-app="post")
+  .features_items(ng-controller="PostCtrl")
     / features_items
     %h2.title.text-center Наши Обои
-    .col-sm-4
+    - @product.each do |p|
+      .col-sm-4
+        .product-image-wrapper
+          .single-products
+            .productinfo.text-center
+              %img.img-responsive.product-image{:alt => "#{p.title}", :src => p.asset.url}/
+              %h2=  p.price.to_s + " P"
+              %p= "Aртикул: " + p.marking.to_s
+              %p= "#{p.weight} x #{p.height}"
+              %p= p.title
+                
+              %a.btn.btn-default.add-to-cart{:href => "#"}
+                %i.fa.fa-shopping-cart>
+                  В Корзину
+            .product-overlay
+              .overlay-content
+                %a.inside{:href => "#"}
+                %h2 Страна
+                = p.collection.label.country.name
+                %h2 Бренд
+                =link_to p.collection.label.name, admin_collection_path(p.collection.label)
+                %h2 Коллекция 
+                =link_to p.collection.name, admin_collection_path(p.collection)
+                
+                %h2=  p.price.to_s + " P"
+                %h2
+                  =link_to p.title, admin_collection_path(p.collection.label)
+                %p= p.marking
+                %a.btn.btn-default.add-to-cart{:href => "#"}
+                  %i.fa.fa-shopping-cart>
+                    В Корзину
+          .choose
+            %ul.nav.nav-pills.nav-justified
+    .row
+      .col-sm-12
+    .col-sm-4.phone-listing(ng-repeat="post in posts" ng-show="posts")
       .product-image-wrapper
         .single-products
           .productinfo.text-center
-            %img.img-responsive.product-image{:alt => "", :src => asset_path("w/1.jpg")}/
-            %h2 $56
-            %p Easy Polo Black Edition
+            %img.img-responsive.product-image{:alt => "", :src => "{{post.asset.url}}"}/
+            %h2 
+              {{post.price}} P
+            %p Aртикул: {{post.marking}}
+            %p {{post.weight}} x {{post.height}}
+            %p {{post.title}}
             %a.btn.btn-default.add-to-cart{:href => "#"}
               %i.fa.fa-shopping-cart>
-              В Корзину
-          .product-overlay
-            .overlay-content
-              %h2 $56
-              %p Easy Polo Black Edition
-              %a.btn.btn-default.add-to-cart{:href => "#"}
-                %i.fa.fa-shopping-cart>
                 В Корзину
-        .choose
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to wishlist
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to compare
-    .col-sm-4
-      .product-image-wrapper
-        .single-products
-          .productinfo.text-center
-            %img.img-responsive.product-image{:alt => "", :src => asset_path("w/6.jpg")}/
-            %h2 $56
-            %p Easy Polo Black Edition
-            %a.btn.btn-default.add-to-cart{:href => "#"}
-              %i.fa.fa-shopping-cart>
-              В Корзину
-          .product-overlay
-            .overlay-content
-              %h2 $56
-              %p Easy Polo Black Edition
-              %a.btn.btn-default.add-to-cart{:href => "#"}
-                %i.fa.fa-shopping-cart>
-                В Корзину
-        .choose
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to wishlist
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to compare
-    .col-sm-4
-      .product-image-wrapper
-        .single-products
-          .productinfo.text-center
-            %img.img-responsive.product-image{:alt => "", :src => asset_path("w/2.jpg")}/
-            %h2 $56
-            %p Easy Polo Black Edition
-            %a.btn.btn-default.add-to-cart{:href => "#"}
-              %i.fa.fa-shopping-cart>
-              В Корзину
-          .product-overlay
-            .overlay-content
-              %h2 $56
-              %p Easy Polo Black Edition
-              %a.btn.btn-default.add-to-cart{:href => "#"}
-                %i.fa.fa-shopping-cart>
-                В Корзину
-        .choose
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to wishlist
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to compare
-    .col-sm-4
-      .product-image-wrapper
-        .single-products
-          .productinfo.text-center
-            %img.product-image{:alt => "", :src => asset_path("w/3.jpg")}/
-            %h2 $56
-            %p Easy Polo Black Edition
-            %a.btn.btn-default.add-to-cart{:href => "#"}
-              %i.fa.fa-shopping-cart>
-              В Корзину
-          .product-overlay
-            .overlay-content
-              %h2 $56
-              %p Easy Polo Black Edition
-              %a.btn.btn-default.add-to-cart{:href => "#"}
-                %i.fa.fa-shopping-cart>
-                В Корзину
-          %img.new{:alt => "", :src => asset_path("home/new.png")}/
-        .choose
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to wishlist
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to compare
-    .col-sm-4
-      .product-image-wrapper
-        .single-products
-          .productinfo.text-center
-            %img.img-responsive.product-image{:alt => "", :src => asset_path("w/12.jpg")}/
-            %h2 $56
-            %p Easy Polo Black Edition
-            %a.btn.btn-default.add-to-cart{:href => "#"}
-              %i.fa.fa-shopping-cart>
-              В Корзину
-          .product-overlay
-            .overlay-content
-              %h2 $56
-              %p Easy Polo Black Edition
-              %a.btn.btn-default.add-to-cart{:href => "#"}
-                %i.fa.fa-shopping-cart>
-                В Корзину
-          %img.new{:alt => "", :src => asset_path("home/sale.png")}/
-        
-    .col-sm-4
-      .product-image-wrapper
-        .single-products
-          .productinfo.text-center
-            %img.img-responsive.product-image{:alt => "",:src =>  asset_path("w/5.jpg")}/
-            %h2 $56
-            %p Easy Polo Black Edition
-            %a.btn.btn-default.add-to-cart{:href => "#"}
-              %i.fa.fa-shopping-cart>
-              В Корзину
-          .product-overlay
-            .overlay-content
-              %h2 $56
-              %p Easy Polo Black Edition
-              %a.btn.btn-default.add-to-cart{:href => "#"}
-                %i.fa.fa-shopping-cart>
-                В Корзину
-        .choose
-          %ul.nav.nav-pills.nav-justified
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to wishlist
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-plus-square>
-                Add to compare
-  / features_items
 
-/ /price-range
+          .product-overlay
+            .overlay-content
+              %a.inside{:href => "#"}
+              %h2 Страна
+              {{post.collection.label.country.name}}
+              %h2 Бренд
+              %a{:href => "/labels/{{post.collection.label.id}}"} 
+                {{post.collection.label.name }}
+              %h2 Коллекция 
+              %a{:href => "/collections/{{post.collection_id}}"}
+                {{post.collection.name}}
+              
+              %h2 {{post.price}}  P
+              %h2
+                %a{:href => "/posts/{{post.id}}"} {{post.title}}
+              %p {{post.marking}}
+              %a.btn.btn-default.add-to-cart{:href => "#"}
+                %i.fa.fa-shopping-cart>
+                  В Корзину
+          .choose
+            %ul.nav.nav-pills.nav-justified
+      
+     
+  
+    %button.btn.btn-default.center-block(ng-click="add()")
+      Показать еще {{x}}
