@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: a08c6f9f773bf76c0172f4f142f6cac769865a01
+  revision: a436d693799e19dab0cf01be99687e10088e5421
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -117,7 +117,7 @@ GEM
       multi_json
       thor
       tilt
-    guard-rails (0.6.1)
+    guard-rails (0.7.0)
       guard (~> 2.0)
     guard-rspec (4.3.1)
       guard (~> 2.1)

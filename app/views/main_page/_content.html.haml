@@ -19,7 +19,6 @@
                   В Корзину
             .product-overlay
               .overlay-content
-                %a.inside{:href => "#"}
                 %h2 Страна
                 = p.collection.label.country.name
                 %h2 Бренд
@@ -54,7 +53,6 @@
 
           .product-overlay
             .overlay-content
-              %a.inside{:href => "#"}
               %h2 Страна
               {{post.collection.label.country.name}}
               %h2 Бренд
@@ -66,7 +64,7 @@
               
               %h2 {{post.price}}  P
               %h2
-                %a{:href => "/posts/{{post.id}}"} {{post.title}}
+                %a{:href => "/product/{{post.id}}"} {{post.title}}
               %p {{post.marking}}
               %a.btn.btn-default.add-to-cart{:href => "#"}
                 %i.fa.fa-shopping-cart>

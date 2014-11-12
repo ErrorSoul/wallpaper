@@ -10,5 +10,17 @@ class Product < ActiveRecord::Base
   belongs_to :collection
   belongs_to :type
   mount_uploader :asset, AssetUploader
-  
+
+
+def self.slider?(arr)
+  arr.length > 3
 end
+
+
+def self.make_slider(arr)
+  arr.each_slice(3).to_a
+end 
+end
+
+
+

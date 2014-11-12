@@ -1,0 +1,15 @@
+%p
+  %b Доступность:
+  На складе
+%p
+  %b Тип:
+  = @product.type.name
+%p
+  %b Brand:
+  =link_to @product.collection.label.name, product_path(@product)
+%p
+  %b Brand:
+  =link_to @product.collection.name, product_path(@product)
+%p
+  %b Размер:
+  = "#{@product.weight} x #{@product.height}"

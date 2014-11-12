@@ -1,0 +1,56 @@
+.col-sm-9.padding-right
+  .product-details
+    / product-details
+    .col-sm-5
+      .view-product
+        =image_tag(@product.asset.url)
+        
+     
+    .col-sm-7
+      .product-information
+        / /product-information
+        
+        %h2= @product.title
+        %p= "Артикул: " +  @product.marking.to_s
+        
+        %span
+          %span=   @product.price.to_s +  " P"
+          %label Количество:
+          %input{:type => "text", :value => "1"}/
+          %button.btn.btn-fefault.cart{:type => "button"}
+            %i.fa.fa-shopping-cart
+            В Корзину
+        = render :partial => "product_detail"
+      / /product-information
+  / /product-details
+  .category-tab.shop-details-tab
+    / category-tab
+    .col-sm-12
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#details"} Детали
+        
+        %li
+          %a{"data-toggle" => "tab", :href => "#reviews"} Описание
+    .tab-content
+      #details.tab-pane.fade.active.in
+        .col-sm-12
+          .col-sm-6
+            %p
+              %b Страна:
+              = @product.collection.label.country.name
+            
+          .col-sm-6
+            = render :partial => "product_detail"
+        
+      #reviews.tab-pane.fade
+        .col-sm-12
+          
+          %p= @product.description
+          
+  / /category-tab
+  .recommended_items
+    / recommended_items
+    %h2.title.text-center Рекомендованные вам
+    = render :partial => "carousel"
+        

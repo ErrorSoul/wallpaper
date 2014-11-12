@@ -1,0 +1,24 @@
+
+
+#recommended-item-carousel.carousel.slide{"data-ride" => "carousel", "data-interval" => '20000'}
+  .carousel-inner
+    - if @flag
+      - @products.each_with_index do |group, ind|
+        - if ind == 0
+          .item.active
+            - group.each do |item|
+              = render :partial =>  "item", :locals => { :item => item }
+        - else 
+          .item
+            - group.each do |item|
+              = render :partial =>  "item", :locals => { :item => item }
+    - else
+      .item.active
+        - @products.each do |item|
+          = render :partial =>  "item"
+  - if @flag
+    %a.left.recommended-item-control{"data-slide" => "prev", :href => "#recommended-item-carousel"}
+      %i.fa.fa-angle-left
+    %a.right.recommended-item-control{"data-slide" => "next", :href => "#recommended-item-carousel"}
+      %i.fa.fa-angle-right
+ 

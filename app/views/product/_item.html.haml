@@ -1,0 +1,11 @@
+
+.col-sm-4
+  .product-image-wrapper
+    .single-products
+      .productinfo.text-center
+        =image_tag(item.asset.url, :class => "product-image")
+        %h2= "#{item.price} P"
+        %p= item.title
+        %button.btn.btn-default.add-to-cart{:type => "button"}
+          %i.fa.fa-shopping-cart>
+          В корзину
