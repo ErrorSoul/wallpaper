@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'countries/show'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'main_page#index'
 
   resources :product
+
+  resources :countries, only: :show
   get 'more/:id' => "main_page#more"
 
   # The priority is based upon order of creation: first created -> highest priority.
