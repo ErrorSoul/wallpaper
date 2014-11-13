@@ -15,7 +15,7 @@
     - else
       .item.active
         - @products.each do |item|
-          = render :partial =>  "item"
+          = render :partial =>  "item", :locals => { :item => item }
   - if @flag
     %a.left.recommended-item-control{"data-slide" => "prev", :href => "#recommended-item-carousel"}
       %i.fa.fa-angle-left

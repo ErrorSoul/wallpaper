@@ -1,3 +1,4 @@
+//countries
 .col-sm-9.padding-right(ng-app="post")
   .features_items(ng-controller="PostCtrl")
     / features_items
@@ -7,13 +8,13 @@
         .product-image-wrapper
           .single-products
             .productinfo.text-center
-              = link_to  image_tag(l.asset.url, :class => "img-responsive product-image"), product_path(l)
+              = link_to  image_tag(l.asset.url, :class => "img-responsive product-image"), label_path(l)
              
-              %h2= link_to l.name, product_path(l)
+              %h2= link_to l.name, label_path(l)
             .product-overlay
               .overlay-content
                 %p= @c.name
-                %h2= link_to l.name, product_path(l)
+                %h2= link_to l.name, label_path(l)
             .btn
             
               

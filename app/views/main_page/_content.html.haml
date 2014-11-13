@@ -1,4 +1,4 @@
-
+//main page
 .col-sm-9.padding-right(ng-app="post")
   .features_items(ng-controller="PostCtrl")
     / features_items
@@ -22,7 +22,7 @@
                 %h2 Страна
                 = p.collection.label.country.name
                 %h2 Бренд
-                =link_to p.collection.label.name, admin_collection_path(p.collection.label)
+                =link_to p.collection.label.name, label_path(p.collection.label)
                 %h2 Коллекция 
                 =link_to p.collection.name, admin_collection_path(p.collection)
                 

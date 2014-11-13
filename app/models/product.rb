@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :height, numericality: {greater_than_or_equal_to: 0.01}
   validates :weight, numericality: {greater_than_or_equal_to: 0.01}
+  default_scope -> { order('created_at DESC') }
   belongs_to :collection
   belongs_to :type
   mount_uploader :asset, AssetUploader

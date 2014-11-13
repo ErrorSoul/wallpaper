@@ -9,7 +9,7 @@ class MainPageController < ApplicationController
   end
 
   def more 
-    @new_products = Product.includes(:type,:collection => [:label => :country]).where('id > ?', params[:id]).limit(6)
+    @new_products = Product.includes(:type,:collection => [:label => :country]).where('id < ?', params[:id]).limit(6)
     render json:  {post: @new_products}, 
     :include => {:type => {:only => [:name, :id]}, 
                  :collection => 

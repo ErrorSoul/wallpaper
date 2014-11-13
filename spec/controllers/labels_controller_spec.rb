@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CountriesController do
+describe LabelsController do
 
   describe "GET 'show'" do
     it "returns http success" do

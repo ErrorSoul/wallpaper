@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :collection do
     name "MyString"
-label nil
+    label 
   end
 
 end

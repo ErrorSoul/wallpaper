@@ -29,7 +29,7 @@
             %ul
               - @label.each do |c|
                 %li
-                  =link_to c.name.mb_chars.capitalize.to_s, admin_country_path(c)
+                  =link_to c.name.mb_chars.capitalize.to_s, label_path(c)
       .panel.panel-default
         .panel-heading
           %h4.panel-title
