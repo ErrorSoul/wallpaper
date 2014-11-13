@@ -1,19 +1,19 @@
 //labels
 
-.col-sm-9.padding-right(ng-app="post")
-  .features_items(ng-controller="PostCtrl")
+.col-sm-9.padding-right
+  .features_items
     / features_items
-    %h2.title.text-center= @l.name
+    %h4.title_label.text-center= @l.name
     - @col.each do |col|
       .col-sm-4
         .product-image-wrapper
           .single-products
             .productinfo.text-center
-              = link_to  image_tag(col.asset.url, :class => "img-responsive product-image"), product_path(col)
+              = link_to  image_tag(col.asset.url, :class => "img-responsive product-image"), collection_path(col)
              
-              %h2= link_to col.name, product_path(col)
+              %h5= link_to col.name, collection_path(col)
             .product-overlay
               .overlay-content
                 %p= @l.name
-                %h2= link_to col.name, product_path(col)
+                %h5= link_to col.name, collection_path(col)
             .btn
