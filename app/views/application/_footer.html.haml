@@ -7,22 +7,26 @@
         .col-sm-2
           .single-widget
             %h2 Brands
-            
-        .col-sm-2
-          .single-widget
-            %h2 Quock Shop
+            -@label[0,7].each do |x|
+              %br
+              =link_to x.name, label_path(x)
+          
+        
            
         .col-sm-2
           .single-widget
-            %h2 Policies
+            %h2 Контакты
             
         .col-sm-2
           .single-widget
             %h2 О нас
+            =link_to "Более 10 лет на рынке", about_path
             
         .col-sm-3.col-sm-offset-1
           .single-widget
             %h2 Доставка и оплата
+              
+            =link_to "Узнай больше", delivery_path
             
   .footer-bottom
     .container

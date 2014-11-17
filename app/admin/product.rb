@@ -5,7 +5,7 @@ ActiveAdmin.register Product do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :title, :collection_id, :asset, :type,:paint,  :description, :price, :weight, :height, :marking
+  permit_params :title, :collection_id, :asset, :type,:paint,  :description, :price, :weight, :height, :marking, :area_id
   #
   # or
   #
@@ -39,6 +39,8 @@ index do
   column "Тип", :type do |x|
       x.type.name
     end
+  
+  
   column "Последнее изменение", :updated_at
   actions
   end
@@ -50,7 +52,8 @@ index do
     f.inputs "Team" do
       f.input :collection, :as => :select , :collection => Collection.all, :label => "Коллекция"
       f.input :type, :as => :select, :collection => Type.all, :label => "Тип"
-      f.input :type, :as => :select, :collection => Paint.all, :label => "Рисунок"
+      f.input :paint, :as => :select, :collection => Paint.all, :label => "Рисунок"
+      f.input :area, :as => :select, :collection => Area.all, :label => "Помещение"
       f.input :title, :label => "Название"
       f.input :asset, :label => "Картинка"
       f.input :marking, :label => "Артикул"
@@ -85,6 +88,9 @@ index do
     row "тип" do
 	x.type.name 
 	end
+    row "помещение " do 
+        x.area.name
+      end
     row "рисунок" do
 	x.paint.name
 	end

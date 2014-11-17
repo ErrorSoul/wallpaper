@@ -51,38 +51,16 @@
             %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#size"}
               %span.badge.pull-right
                 %i.fa.fa-plus
-              По размеру
+              По помещению
         #size.panel-collapse.collapse
           .panel-body
             %ul
-              %li
-                %a{:href => "#"} 53 см
-              %li
-                %a{:href => "#"} 70 см
-              %li
-                %a{:href => "#"} 1 метр
+              - @areas.each do |x|
+                %li
+                  =link_to x.name.mb_chars.capitalize.to_s, area_path(x)
+             
 
-      .panel.panel-default
-        .panel-heading
-          %h4.panel-title
-            %a{"data-parent" => "#accordian", "data-toggle" => "collapse", :href => "#type"}
-              %span.badge.pull-right
-                %i.fa.fa-plus
-              По типу
-        #type.panel-collapse.collapse
-          .panel-body
-            %ul
-              %li
-                %a{:href => "#"} 53 см
-              %li
-                %a{:href => "#"} 70 см
-              %li
-                %a{:href => "#"} 1 метр
-              
-      .panel.panel-default
-        .panel-heading
-          %h4.panel-title
-            %a{:href => "#"} Все бренды
+    
      
     .brands_products
       / brands_products

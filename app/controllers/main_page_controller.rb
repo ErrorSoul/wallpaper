@@ -27,7 +27,8 @@ class MainPageController < ApplicationController
 def more_type
   
   modes = {"1" => "type_id",
-           "2" => "paint_id"}
+           "2" => "paint_id",
+           "3" => "area_id"}
   
   @new_products = Product.includes(:collection)
     .where("#{modes[params[:mode_id]]} = ? and id < ? ", 

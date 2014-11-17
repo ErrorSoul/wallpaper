@@ -11,6 +11,7 @@ class Product < ActiveRecord::Base
   belongs_to :collection
   belongs_to :type
   belongs_to :paint
+  belongs_to :area
   mount_uploader :asset, AssetUploader
 
 

@@ -42,6 +42,9 @@
             %p
               %b Рисунок:
               = @product.paint.name
+            %p
+              %b Рекомендуемое помещение:
+              = @product.area.name
             
           .col-sm-6
             = render :partial => "product_detail"

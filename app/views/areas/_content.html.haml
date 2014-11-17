@@ -1,14 +1,14 @@
-//types
+//areas
 .col-sm-9.padding-right(ng-app="post")
   .features_items(ng-controller="PaintCtrl")
-    / features_itemsк
+    / features_items
     .col-sm-12.middle-line
       .col-sm-8.center-block
-        %h5.tit.text-center=  "Тип обоев  «#{@type.name}»"
-    -if @type.text
+        %h5.tit.text-center=  "Тип помещения  «#{@area.name}»"
+    -if @area.text
       .col-sm-12.text-wrapper.last-part
-        %p= @type.text.html_safe
-    - @type_products.each do |p|
+        %p= @area.text.html_safe
+    - @area_products.each do |p|
       .col-sm-4
         .product-image-wrapper
           .single-products
@@ -32,7 +32,7 @@
 
 
     .row
-      #init-data.col-sm-12(data-init="#{@type_products.last.id}")
+      #init-data.col-sm-12(data-init="#{@area_products.last.id}")
     .col-sm-4.phone-listing(ng-repeat="product in products" ng-show="products")
       .product-image-wrapper
         .single-products
@@ -65,5 +65,5 @@
       
      
   
-    %button.btn.under-footer.center-block(ng-click="add(1, #{@type.id})")
+    %button.btn.under-footer.center-block(ng-click="add(3, #{@area.id})")
       Показать еще {{x}}

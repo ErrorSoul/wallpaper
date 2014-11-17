@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :collections, only: :show
   resources :paints, only: :show
   resources :types, only: :show
-
+  resources :areas, only: :show
   get 'about' => 'main_page#about'
   get 'delivery' => 'main_page#delivery'
 
