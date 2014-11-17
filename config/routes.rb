@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   resources :paints, only: :show
   resources :types, only: :show
 
+  get 'about' => 'main_page#about'
+  get 'delivery' => 'main_page#delivery'
+
   get 'more/:id' => "main_page#more"
 
   get 'more_type/:mode_id/:elem_id/:id' => "main_page#more_type"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

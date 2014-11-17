@@ -1,7 +1,7 @@
 class MainPageController < ApplicationController
   
-  require 'pry'
-  before_action :set_need_attr, only: [:index]
+  
+  before_action :set_need_attr, only: [:index, :about, :delivery]
   def index
 
     @product = Product.includes(:type,:paint, :collection => [:label => :country]).limit(6)
@@ -38,7 +38,12 @@ def more_type
   
   render json:  {product: @new_products}
 
+end
 
+def about
+end
+
+def delivery
 end
 
 end
