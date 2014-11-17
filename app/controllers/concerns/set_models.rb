@@ -3,7 +3,7 @@ module SetModels
   private
 
   def set_need_attr
-    @type = Type.all
+    @types = Type.all
     @country = Country.all
     @label = Label.all
     @paints = Paint.all

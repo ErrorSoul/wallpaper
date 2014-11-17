@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :countries, only: :show
   resources :collections, only: :show
   resources :paints, only: :show
+  resources :types, only: :show
 
   get 'more/:id' => "main_page#more"
 

@@ -8,7 +8,8 @@ ActiveAdmin.register Label do
   #
   permit_params :name, :country_id, :asset
   
-
+  filter :name, label: "Название"
+  filter :country_id, :as => :check_boxes, :collection => proc { Country.all }
   index do 
 
   column "Haзвание", :name do |x| 

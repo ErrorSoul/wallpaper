@@ -14,7 +14,7 @@
         %p= "Артикул: " +  @product.marking.to_s
         
         %span
-          %span=   @product.price.to_s +  " P"
+          %span=   "#{number_to_currency(@product.price, :unit => " ")}"
           %label Количество:
           %input{:type => "text", :value => "1"}/
           %button.btn.btn-fefault.cart{:type => "button"}

@@ -75,9 +75,9 @@
                   Каталог
                   %i.fa.fa-angle-down
                 %ul.sub-menu{:role => "menu"}
-                  - @type.all.each do |type|
+                  - @types.all.each do |type|
                     %li
-                      =link_to type.name.mb_chars.capitalize.to_s, admin_country_path(type)
+                      =link_to type.name.mb_chars.capitalize.to_s,type_path(type)
                   
              
               %li
