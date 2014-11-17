@@ -8,6 +8,7 @@ FactoryGirl.define do
     marking Faker::Code.isbn
     collection 
     type
+    paint
   end
 
 end

@@ -40,18 +40,10 @@
         #womens.panel-collapse.collapse
           .panel-body
             %ul
-              %li
-                %a{:href => "#"} Детский
-              %li
-                %a{:href => "#"} Геометрический
-              %li
-                %a{:href => "#"} Классический
-              %li
-                %a{:href => "#"} Однотонный
-              %li
-                %a{:href => "#"} Растительный
-              %li
-                %a{:href => "#"} Другой
+              - @paints.each do |x|
+                %li
+                  =link_to x.name.mb_chars.capitalize.to_s, paint_path(x)
+             
               
       .panel.panel-default
         .panel-heading

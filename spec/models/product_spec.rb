@@ -11,7 +11,8 @@ describe Product do
                                           marking: "1223mn",
                                           weight: 0.5, 
                                           height: 10.5,
-                                          type_id: 1)
+                                          type_id: 1,
+                                          paint_id: 1)
   end
 
   subject { @product  }
@@ -24,6 +25,7 @@ describe Product do
   it { should respond_to(:collection_id)}
   it { should respond_to(:asset) }
   it { should respond_to(:type_id)}
+  it { should respond_to(:paint_id)}
   
   it { should be_valid }
 
@@ -131,5 +133,14 @@ describe Product do
     it {should be_invalid}
   end
 
+  #paint
+  describe "without paint_id" do
+    before { @product.paint_id = nil}
+    it {should be_invalid}
+  end
+
+  
+
+  
   
 end

@@ -3,14 +3,15 @@
   .features_items(ng-controller="PostCtrl")
     / features_items
     %h2.title.text-center Наши Обои
+    
     - @product.each do |p|
       .col-sm-4
         .product-image-wrapper
           .single-products
             .productinfo.text-center
               %img.img-responsive.product-image{:alt => "#{p.title}", :src => p.asset.url}/
-              %h2=  p.price.to_s + " P"
-              %p= "Aртикул: " + p.marking.to_s
+              %h2= "#{number_to_currency(p.price, :unit => " ")}"
+             
               %p= "#{p.weight} x #{p.height}"
               %p= p.title
                 
@@ -26,7 +27,7 @@
                 %h2 Коллекция 
                 =link_to p.collection.name, collection_path(p.collection)
                 
-                %h2=  p.price.to_s + " P"
+                %h2=  "#{number_to_currency(p.price, :unit => " ")}"
                 %h2
                   =link_to p.title, product_path(p)
                 %p= p.marking
@@ -36,17 +37,17 @@
           .choose
             %ul.nav.nav-pills.nav-justified
     .row
-      .col-sm-12
-    .col-sm-4.phone-listing(ng-repeat="post in posts" ng-show="posts")
+      #init-data.col-sm-12(data-init="#{@product.last.id}")
+    .col-sm-4.phone-listing(ng-init="init_id=#{@product.last.id}" ng-repeat="post in posts" ng-show="posts")
       .product-image-wrapper
         .single-products
           .productinfo.text-center
             %img.img-responsive.product-image{:alt => "", :src => "{{post.asset.url}}"}/
             %h2 
-              {{post.price}} P
-            %p Aртикул: {{post.marking}}
+              {{post.price|currency:" "}} 
             %p {{post.weight}} x {{post.height}}
             %p {{post.title}}
+            %p {{post_id}}
             %a.btn.btn-default.add-to-cart{:href => "#"}
               %i.fa.fa-shopping-cart>
                 В Корзину
@@ -62,7 +63,7 @@
               %a{:href => "/collections/{{post.collection_id}}"}
                 {{post.collection.name}}
               
-              %h2 {{post.price}}  P
+              %h2 {{post.price|currency:" "}} 
               %h2
                 %a{:href => "/product/{{post.id}}"} {{post.title}}
               %p {{post.marking}}

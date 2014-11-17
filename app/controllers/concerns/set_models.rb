@@ -6,6 +6,7 @@ module SetModels
     @type = Type.all
     @country = Country.all
     @label = Label.all
+    @paints = Paint.all
     #@collection= Collection.all.limit(10)
   end
 end

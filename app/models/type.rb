@@ -1,3 +1,3 @@
 class Type < ActiveRecord::Base
-  has_one :product
+  has_many :products
 end

@@ -4,19 +4,22 @@
 .col-sm-9.padding-right
   .features_items
     / features_items
-    %h5.title_label.text-center= @col.name
+    .col-sm-12.middle-line
+      .col-sm-8.center-block
+        %h5.tit.text-center=  "Коллекция  «#{@col.name}»"
     - @col.products.each do |p|
       .col-sm-4
         .product-image-wrapper
           .single-products
             .productinfo.text-center
               = link_to  image_tag(p.asset.url, :class => "img-responsive product-image"), product_path(p)
-              %h2= "#{p.price} P"
+              %h2= "#{number_to_currency(p.price, :unit => " ")}"
              
               %h5= link_to p.title, product_path(p)
+              
             .product-overlay
               .overlay-content
-                %h2= "#{p.price} P"
+                %h2= "#{number_to_currency(p.price, :unit => " ")}"
                 %p= @col.name
                 %h5= link_to p.title, product_path(p)
                 

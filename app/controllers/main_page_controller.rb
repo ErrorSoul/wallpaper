@@ -1,10 +1,10 @@
 class MainPageController < ApplicationController
   
-  
+  require 'pry'
   before_action :set_need_attr, only: [:index]
   def index
 
-    @product = Product.includes(:type,:collection => [:label => :country]).limit(6)
+    @product = Product.includes(:type,:paint, :collection => [:label => :country]).limit(6)
     
   end
 
@@ -18,6 +18,28 @@ class MainPageController < ApplicationController
                        :only =>[:name, :id]}}
   end
 
+
+
+
+
+
+
+def more_type
+  
+  modes = {"1" => "type_id",
+           "2" => "paint_id"}
+  
+  @new_products = Product.includes(:collection)
+    .where("#{modes[params[:mode_id]]} = ? and id < ? ", 
+           params[:elem_id ], 
+           params[:id]
+           ).limit(6)
+    
+  
+  render json:  {product: @new_products}
+
+
 end
 
+end
 

@@ -40,11 +40,12 @@ describe Collection do
 
   describe "products associations" do
     let!(:collection){FactoryGirl.create(:collection)}
+    let!(:paint){FactoryGirl.create(:paint)}
     let!(:older_product) do
-      FactoryGirl.create(:product, collection: collection, created_at: 1.day.ago)
+      FactoryGirl.create(:product, paint: paint, collection: collection, created_at: 1.day.ago)
     end
     let!(:newer_product) do
-      FactoryGirl.create(:product, collection: collection, created_at: 1.hour.ago)
+      FactoryGirl.create(:product, paint: paint,  collection: collection, created_at: 1.hour.ago)
     end
     it "should have the right products in the right order" do
       expect(collection.products.to_a).to eq [newer_product, older_product]

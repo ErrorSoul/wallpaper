@@ -39,6 +39,9 @@
             %p
               %b Страна:
               = @product.collection.label.country.name
+            %p
+              %b Рисунок:
+              = @product.paint.name
             
           .col-sm-6
             = render :partial => "product_detail"
@@ -51,6 +54,6 @@
   / /category-tab
   .recommended_items
     / recommended_items
-    %h2.title.text-center Похожие товары
+    %h4.title_label.text-center Похожие товары
     = render :partial => "carousel"
         

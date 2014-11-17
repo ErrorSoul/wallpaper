@@ -3,7 +3,9 @@
 .col-sm-9.padding-right
   .features_items
     / features_items
-    %h4.title_label.text-center= @l.name
+    .col-sm-12.middle-line
+      .col-sm-6.center-block
+        %h5.tit.text-center=  "Бренд «#{@l.name}»"
     - @col.each do |col|
       .col-sm-4
         .product-image-wrapper

@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   validates :title, :description, :marking,  presence: true
-  validates :type_id, :collection_id, presence: true
+  validates :type_id, :collection_id, :paint_id, presence: true
   validates  :title,  length: {maximum: 100,
                                minimum: 4}
   validates :marking, length: {maximum: 25, minimum: 3  }
@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   belongs_to :collection
   belongs_to :type
+  belongs_to :paint
   mount_uploader :asset, AssetUploader
 
 

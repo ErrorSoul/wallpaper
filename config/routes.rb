@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   resources :labels, only: :show
   resources :countries, only: :show
   resources :collections, only: :show
+  resources :paints, only: :show
+
   get 'more/:id' => "main_page#more"
+
+  get 'more_type/:mode_id/:elem_id/:id' => "main_page#more_type"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
