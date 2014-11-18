@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :paints, only: :show
   resources :types, only: :show
   resources :areas, only: :show
+  resource :line_items 
   get 'about' => 'main_page#about'
   get 'delivery' => 'main_page#delivery'
 

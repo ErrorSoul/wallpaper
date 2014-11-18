@@ -13,13 +13,22 @@
         %h2= @product.title
         %p= "Артикул: " +  @product.marking.to_s
         
-        %span
-          %span=   "#{number_to_currency(@product.price, :unit => " ")}"
-          %label Количество:
-          %input{:type => "text", :value => "1"}/
-          %button.btn.btn-fefault.cart{:type => "button"}
-            %i.fa.fa-shopping-cart
-            В Корзину
+        %span.col-sm-12
+          .row
+            %span.col-sm-2=   "#{number_to_currency(@product.price, :unit => " ")}"
+            .col-sm-10
+
+              = form_for LineItem.new, :html =>{:class => "form-inline"}  do |f|
+
+                = label_tag(:quantity, "Количество:")
+
+                = f.number_field(:quantity, :value => "1")
+                = hidden_field_tag(:product_id, "#{@product.id}")
+
+
+                = button_tag(:type => "submit", :class=> "btn btn-fefaul cart") do
+                  = content_tag(:i, " В Корзину", class: "fa fa-shopping-cart")
+
         = render :partial => "product_detail"
       / /product-information
   / /product-details
