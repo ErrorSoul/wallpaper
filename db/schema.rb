@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117233452) do
+ActiveRecord::Schema.define(version: 20141118164457) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 20141117233452) do
     t.text     "text"
   end
 
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "collections", force: true do |t|
     t.string   "name"
     t.integer  "label_id"
@@ -79,6 +84,18 @@ ActiveRecord::Schema.define(version: 20141117233452) do
   end
 
   add_index "labels", ["country_id"], name: "index_labels_on_country_id"
+
+  create_table "line_items", force: true do |t|
+    t.integer  "product_id"
+    t.string   "product_type"
+    t.integer  "cart_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["product_id", "product_type"], name: "index_line_items_on_product_id_and_product_type"
 
   create_table "paints", force: true do |t|
     t.string   "name"

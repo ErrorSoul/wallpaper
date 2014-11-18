@@ -1,6 +1,7 @@
 
 .col-sm-3
   .left-sidebar
+  
     %h2 Категории
     #accordian.panel-group.category-products
       / category-productsr
@@ -14,9 +15,11 @@
         #sportswear.panel-collapse.collapse
           .panel-body
             %ul
-              - @country.each do |c|
-                %li
-                  =link_to c.name.mb_chars.capitalize.to_s, country_path(c)
+              - cache ['country', @country] do
+                - @country.each do |c|
+                  - cache ['c_entry', c] do
+                    %li
+                      =link_to c.name.mb_chars.capitalize.to_s, country_path(c)
       .panel.panel-default
         .panel-heading
           %h4.panel-title
@@ -27,9 +30,13 @@
         #mens.panel-collapse.collapse
           .panel-body
             %ul
-              - @label.each do |c|
-                %li
-                  =link_to c.name.mb_chars.capitalize.to_s, label_path(c)
+              -cache ['store', @label]  do
+                
+                - @label.each do |c|
+                  -cache ['entry', c] do
+                    %li
+                    
+                      =link_to c.name.mb_chars.capitalize.to_s, label_path(c)
       .panel.panel-default
         .panel-heading
           %h4.panel-title
@@ -40,11 +47,14 @@
         #womens.panel-collapse.collapse
           .panel-body
             %ul
-              - @paints.each do |x|
-                %li
-                  =link_to x.name.mb_chars.capitalize.to_s, paint_path(x)
-             
-              
+              -cache ['paints', @paints] do
+          
+                - @paints.each do |x|
+                  -cache ['paints', @paints] do
+                    %li
+                      =link_to x.name.mb_chars.capitalize.to_s, paint_path(x)
+           
+          
       .panel.panel-default
         .panel-heading
           %h4.panel-title
