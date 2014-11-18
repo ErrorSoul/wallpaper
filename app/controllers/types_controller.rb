@@ -5,7 +5,7 @@ class TypesController < ApplicationController
 
     @type = @types.select{|x| x if x.id == params[:id].to_i}[0]
     @type_products = Product.includes(:collection)
-                            .where('type_id == ?', params[:id])
+                            .where('type_id = ?', params[:id])
                             .limit(6)
   end
 end

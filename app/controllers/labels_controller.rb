@@ -3,6 +3,6 @@ class LabelsController < ApplicationController
   def show
     z = params[:id].to_i
     @l = @label.select{ |x| x if x.id == z }[0]
-    @col = Collection.where('label_id == ?', z)
+    @col = Collection.where('label_id = ?', z)
   end
 end

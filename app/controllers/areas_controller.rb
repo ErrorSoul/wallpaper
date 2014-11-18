@@ -5,7 +5,7 @@ class AreasController < ApplicationController
 
     @area  = @areas.select{|x| x if x.id == params[:id].to_i}[0]
     @area_products = Product.includes(:collection)
-                            .where('area_id == ?', params[:id])
+                            .where('area_id = ?', params[:id])
                             .limit(6)
   end
 end

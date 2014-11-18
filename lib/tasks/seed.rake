@@ -99,7 +99,7 @@ def make_types
 
   def make_paints
    paints =  %w(детский геометрический 
-               классический однотонныйn   
+               классический однотонный   
               растительный  другой)
     paints.each do |x| 
       Paint.create!(name: x)
