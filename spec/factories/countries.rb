@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :country do
-    name "MyString"
-  end
+  factory :country do |f|
+    f.sequence(:name) { |n| "#{Faker::Name.name} #{n}" }
+ end
 
 end

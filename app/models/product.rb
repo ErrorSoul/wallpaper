@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   belongs_to :type
   belongs_to :paint
   belongs_to :area
+  has_many :line_items, as: :product
   mount_uploader :asset, AssetUploader
 
 

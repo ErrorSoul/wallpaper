@@ -1,11 +1,15 @@
 require 'spec_helper'
-
+require 'pry'
 describe Collection do
  before do 
     @label = Label.create(name: "Porshe")
     @collection = @label.collections.build(name: "Vinil")
   end
-
+  after (:all) do 
+    Collection.destroy_all
+    Label.destroy_all
+    Product.destroy_all
+  end
   subject { @collection }
   it { should respond_to(:name)}
   it { should respond_to(:label_id)}
@@ -35,10 +39,14 @@ describe Collection do
       @collection.save
       end
     it {should be_valid}
+    after do
+      @collection.destroy
+    end
   end
 
 
   describe "products associations" do
+   
     let!(:collection){FactoryGirl.create(:collection)}
     let!(:paint){FactoryGirl.create(:paint)}
     let!(:older_product) do

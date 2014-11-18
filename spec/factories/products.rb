@@ -1,6 +1,8 @@
 FactoryGirl.define do
+  sequence(:title) { |n| "Example title #{n}" }
+  sequence(:text)  { |n| Faker::Lorem.sentence(4, false, 2)}
   factory :product do
-    title Faker::Address.state
+    title 
     description "MyText"
     price "9.99"
     weight "9.99"
