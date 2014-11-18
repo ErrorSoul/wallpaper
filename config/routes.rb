@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :slider_mains, ActiveAdmin::Devise.config
   get 'collections/show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

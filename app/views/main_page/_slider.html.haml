@@ -11,7 +11,7 @@
             %li{"data-slide-to" => "3", "data-target" => "#slider-carousel"}
           
           .carousel-inner
-            -Slider.all.each_with_index do |x,ind|
+            -SliderMain.all.each_with_index do |x,ind|
               -if ind == 0
                 .item.active
                   .col-sm-6
@@ -20,16 +20,16 @@
                     %p= x.text
                 
                   .col-sm-6
-                    =image_tag(@product.asset.url, :class => "girl img-responsive")
+                    =image_tag(x.asset.url, :class => "girl img-responsive")
               -else
-                .item.active
+                .item
                   .col-sm-6
                 
                     %h2 Ваш уникальный магазин
                     %p= x.text
                 
                   .col-sm-6
-                    =image_tag(@product.asset.url, :class => "girl img-responsive")
+                    =image_tag(x.asset.url, :class => "girl img-responsive")
                 
                 
            

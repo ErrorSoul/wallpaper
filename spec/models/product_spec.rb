@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Product do
   before do
+    f = File.open('spec/fixtures/dream.jpg')
     @country = Country.create(name: "Russia")
     @label = @country.labels.create(name:"Porshe")
     @collection = @label.collections.create(name: "Vinil")
@@ -9,6 +10,7 @@ describe Product do
                                           price: 100.0,
                                           description: "Perhaps, this is the best wallpaper",
                                           marking: "1223mn",
+                                          asset: f,
                                           weight: 0.5, 
                                           height: 10.5,
                                           type_id: 1,
@@ -26,6 +28,7 @@ describe Product do
   it { should respond_to(:asset) }
   it { should respond_to(:type_id)}
   it { should respond_to(:paint_id)}
+  it { should respond_to(:asset)}
   
   it { should be_valid }
 
