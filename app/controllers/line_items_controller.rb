@@ -2,12 +2,14 @@ class LineItemsController < ApplicationController
   require 'pry'
   include CurrentCart
   before_action :set_cart, only: [:create]
-
+  
   def show 
     @line_item = LineItem.find(params[:id])
     
     render json: @line_item
   end
+  
+
   def create
     
     @product = Product.find(params[:line_item][:product_id])
@@ -17,9 +19,12 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.js
+        
         format.json {render json: {notice: 'Line item was successfully created'}}
+        
       else
-        format.js
+     
+        
         format.json {render json: @line_item.errors,
 status: :unprocessable_entity}
       end

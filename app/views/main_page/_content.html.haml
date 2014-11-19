@@ -31,7 +31,7 @@
                 %h2
                   =link_to p.title, product_path(p)
                 %p= p.marking
-                %a.btn.btn-default.add-to-cart{:href => "#"}
+                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
                   %i.fa.fa-shopping-cart>
                     В Корзину
           .choose
@@ -47,7 +47,7 @@
               {{post.price|currency:" "}} 
             %p {{post.weight}} x {{post.height}}
             %p {{post.title}}
-            %a.btn.btn-default.add-to-cart{:href => "#"}
+            %a.btn.btn-default.add-to-cart
               %i.fa.fa-shopping-cart>
                 В Корзину
 
@@ -66,7 +66,7 @@
               %h2
                 %a{:href => "/product/{{post.id}}"} {{post.title}}
               %p {{post.marking}}
-              %a.btn.btn-default.add-to-cart{:href => "#"}
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(post.id)"}
                 %i.fa.fa-shopping-cart>
                   В Корзину
           .choose

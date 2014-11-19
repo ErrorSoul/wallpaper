@@ -9,6 +9,6 @@
           = link_to item.title, product_path(item)
         
         
-        %button.btn.btn-default.add-to-cart{:type => "button"}
+        %button.btn.btn-default.add-to-cart{:type => "button", :click => "add_to_cart(#{item.id})"}
           %i.fa.fa-shopping-cart>
           В корзину

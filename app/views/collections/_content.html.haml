@@ -1,8 +1,8 @@
 //collections
 
 
-.col-sm-9.padding-right
-  .features_items
+.col-sm-9.padding-right(ng-app="post")
+  .features_items(ng-controller="CartCtrl")
     / features_items
     .col-sm-12.middle-line
       .col-sm-8.center-block
@@ -16,6 +16,9 @@
               %h2= "#{number_to_currency(p.price, :unit => " ")}"
              
               %h5= link_to p.title, product_path(p)
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
+                %i.fa.fa-shopping-cart>
+                  В Корзину
               
             .product-overlay
               .overlay-content
@@ -23,4 +26,8 @@
                 %p= @col.name
                 %h5= link_to p.title, product_path(p)
                 
+                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
+                  %i.fa.fa-shopping-cart>
+                    В Корзину
+            
             .btn

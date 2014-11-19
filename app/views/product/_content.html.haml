@@ -12,13 +12,13 @@
         
         %h2= @product.title
         %p= "Артикул: " +  @product.marking.to_s
-        %p#cart UUUU
+        
         %span.col-sm-12
           .row
             %span.col-sm-2=   "#{number_to_currency(@product.price, :unit => " ")}"
             .col-sm-10
 
-              = form_for LineItem.new, remote: true, :html =>{:class => "form-inline"}  do |f|
+              = form_for LineItem.new,format: :js,  remote: true, :html =>{:class => "form-inline"}  do |f|
 
                 = label_tag(:quantity, "Количество:")
 
@@ -26,7 +26,7 @@
                 = f.hidden_field(:product_id, :value=> "#{@product.id}")
 
                 
-                = f.submit "Привет",  :class=> "btn btn-fefaul cart"  
+                = f.submit "В Корзину",  :class=> "btn btn-fefaul cart"  
                   
                     
 
@@ -65,8 +65,8 @@
           %p= @product.description
           
   / /category-tab
-  .recommended_items
+  .recommended_items(ng-app = "post")
     / recommended_items
-    %h4.title_label.text-center Похожие товары
+    %h4.title_label.text-center(ng-controller="CartCtrl") Похожие товары
     = render :partial => "carousel"
         
