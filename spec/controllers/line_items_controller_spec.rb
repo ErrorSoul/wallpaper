@@ -87,4 +87,37 @@ end
       
   end
 
+
+  describe "update method" do 
+    before(:each) do 
+      set_cart
+      @cart.line_items.create!(product: product, quantity: 3)
+      @cart.line_items.create!(product: product1, quantity: 4)
+      @update_list = []
+      @cart.line_items.each do |x| 
+        @update_list << {id: x.id, quantity: x.quantity}
+      end
+    end
+    after(:each) do
+        
+        [@cart.line_items,
+         Cart, 
+         Product].each {|x| x.destroy_all}
+    end
+    it "should return success message" do
+     
+      patch :update, items: @update_list, format: :json
+      expected_json = {message: "Your line_item updated"}.to_json
+      expect(response.body).to eq expected_json 
+    end
+    
+    it "should return update quantity"  do
+      patch :update, items: @update_list, format: :json
+      expect(@cart.line_items.first.quantity).to eq 3
+    end
+  end
+      
+
+      
+
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :paints, only: :show
   resources :types, only: :show
   resources :areas, only: :show
-  resources :line_items, only: [:create, :destroy, :show], defaults: { format: 'json' }
+  resources :line_items, only: [:create, :destroy,:update, :show], defaults: { format: 'json' }
   get 'about' => 'main_page#about'
   get 'delivery' => 'main_page#delivery'
   get 'more/:id' => "main_page#more"

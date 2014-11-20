@@ -15,7 +15,27 @@ class LineItemsController < ApplicationController
     
   end
   
+  
 
+
+  def update 
+    @list_update = params[:items]
+    x = @list_update.map do |lin|
+      if LineItem.find(lin[:id])
+                 .update_attribute(:quantity, lin[:quantity])
+        true
+      else
+        false
+      end
+    end
+    
+    if x.all?
+      render json: {message: "Your line_item updated" }
+    else 
+      render json: {message: "something gone wrong"}
+    end
+  end
+  
   def create
     
     @product = Product.find(params[:line_item][:product_id])

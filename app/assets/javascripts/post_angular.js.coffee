@@ -34,14 +34,14 @@ angular.module('post')
           scope.$apply(attrs.ngReallyClick))
   
   ])
-  .controller "CartShowCtrl", ["$scope", "$http",  ($scope, $http) ->
+  .controller "CartShowCtrl", ["$scope", "$http","$timeout",  ($scope, $http, $timeout) ->
     $http.get("line_items/1").success((data) ->
       if data.message
         $scope.message = data.message
         
       else
         $scope.items = data.items
-        $scope.d = $scope.items[0]
+      
         console.log($scope.items)).error((data)->
           console.log(data))
 
@@ -54,8 +54,35 @@ angular.module('post')
       total
     
    
-   
-   
+    $scope.delete_notice = ->
+      $scope.notice = false 
+
+    $scope.update_cart = (callback, error_callback) ->
+      update_items = [] 
+      angular.forEach $scope.items, (item) ->
+        update_items.push({id: item.id, quantity: item.quantity})
+      $http({method: "PATCH", url: "/line_items/1", data: {items: update_items}})
+        .success(callback).error(error_callback)
+      
+      
+    $scope.line_items_update = ->
+      #success callback
+      callback = (data) ->
+        if data.message is "Your line_item updated"
+          $scope.notice = "Ваша корзина обновлена"
+          if $scope.notice
+            $timeout($scope.delete_notice, 3000)
+        else console.lod(data)
+
+      #error callback
+      error_callback = (error) ->
+        console.log(error, "FFF")
+
+      $scope.update_cart(callback, error_callback)
+
+    $scope.contact_form = () ->
+      console.log("contact_form")
+        
     $scope.delete = (idx) ->
       post_to_delete = $scope.items[idx]
       $http.delete("/line_items/#{post_to_delete.id}").success((data) ->
@@ -65,6 +92,7 @@ angular.module('post')
           #post_to_delete.hideValue = true)
           $scope.items.splice(idx, 1))
             .error((error) -> console.log(error))
+            
 
 
     ]
