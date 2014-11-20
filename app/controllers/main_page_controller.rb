@@ -37,7 +37,8 @@ def more_type
            ).limit(6)
     
   
-  render json:  {product: @new_products}
+  render json:  {product: @new_products},
+  :include => :collection
 
 end
 
@@ -47,5 +48,16 @@ end
 def delivery
 end
 
+
+def cart
+   @types = Type.all
+   @label = Label.all
+
+  
+ 
+end
+
+
+   
 end
 

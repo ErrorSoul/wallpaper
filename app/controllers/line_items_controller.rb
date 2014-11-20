@@ -1,12 +1,18 @@
+# -*- coding: utf-8 -*-
 class LineItemsController < ApplicationController
   require 'pry'
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :show, :destroy]
   
   def show 
-    @line_item = LineItem.find(params[:id])
+    @line_item = LineItem.includes(:product).where('cart_id = ?', @cart.id)
+    if @line_item.empty?
+      render json: {message: "Baша корзина пуста"}
+    else
+      render json: {items: @line_item},
+      :include => :product
+    end
     
-    render json: @line_item
   end
   
 
@@ -28,12 +34,22 @@ class LineItemsController < ApplicationController
         format.json {render json: @line_item.errors,
 status: :unprocessable_entity}
       end
+    end
+
   end
-  end
+
+    def destroy
+     
+      @cart.line_items.destroy(params[:id])
+      render json: {message: "Your post deleted"}
+    end
+ 
 private
-def line_item_params
-  params.require(:line_item).permit(:product_id, :quantity)
-end
+    def line_item_params
+      params.require(:line_item).permit(:product_id, :quantity)
+    end
+
+
 end
 
 

@@ -13,13 +13,14 @@ Rails.application.routes.draw do
   resources :paints, only: :show
   resources :types, only: :show
   resources :areas, only: :show
-  resource :line_items, defaults: { format: 'json' }
+  resources :line_items, only: [:create, :destroy, :show], defaults: { format: 'json' }
   get 'about' => 'main_page#about'
   get 'delivery' => 'main_page#delivery'
-
   get 'more/:id' => "main_page#more"
 
   get 'more_type/:mode_id/:elem_id/:id' => "main_page#more_type"
+  
+  get 'cart' => "main_page#cart"
 
 
 

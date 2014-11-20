@@ -87,7 +87,8 @@
               %li
                 %a{:href => "index.html"} Контакты
               %li#current_item
-                %a{:href => "cart.html"}
+                = link_to cart_path do
+                 
                   %i.fa.fa-shopping-cart
                   Корзина
                

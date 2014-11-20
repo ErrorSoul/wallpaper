@@ -1,0 +1,124 @@
+%section#cart_items(ng-app = "post")
+  .container(ng-controller= "CartShowCtrl")
+    .breadcrumbs
+      %ol.breadcrumb
+        %li
+          %a{:href => "#"} Home
+        %li.active Shopping Cart
+    .col-sm-12(ng-if="message")
+      %h2 Ваша корзина пока пуста
+    .table-responsive.cart_info(ng-if="items")
+      %table.table.table-condensed
+        %thead
+          %tr.cart_menu
+            %td.image Товар
+            %td.description
+            %td.price Цена
+            %td.quantity Количество
+            %td.total Всего
+            %td
+        %tbody
+          
+          %tr.phone-listing.animate-repeat(ng-repeat="item in items" )
+            %td.cart_product
+              %a{:href => "/product/{{item.product.id}}"}
+                
+                %img.cart-image{:alt => "",  :src => "{{item.product.asset.url}}"}/
+            %td.cart_description
+              %h4
+                %a{:href => "/product/{{item.product.id}}"} {{item.product.title}}
+              %p Артикул: {{item.product.marking}}
+            %td.cart_price
+              %p {{item.product.price|currency:" "}}
+            %td.cart_quantity
+              .cart_quantity_button
+                
+                %input.cart_quantity_input{:autocomplete => "off", :name => "quantity", "ng-model" => "item.quantity", :type => "number", :value => "1"}
+                  
+            %td.cart_total
+              %p.cart_total_price {{item.quantity * item.product.price | currency: " "}}
+            %td.cart_delete
+              %a.cart_quantity_delete(ng-really-message="Вы уверены?" ng-really-click="delete($index)")
+                %i.fa.fa-times
+       
+         
+    .col-sm-12
+      .col-sm-2.col-sm-offset-8.total-number
+        %p Всего
+      .col-sm-2.total-number
+        %p#total
+          {{total()|currency: " "}}
+      .btn-group.pull-right.cart-button-group
+        %button.cart-button.btn.btn-default.update.pull-right(ng-click="delete($index)")
+          Сохранить
+        %button.cart-button.btn.btn-default.update
+          Заказать
+        
+     
+    
+    
+/ /#cart_items
+%section#do_action
+  .container
+    .heading
+      %h3 What would you like to do next?
+      %p Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.
+    .row
+      .col-sm-6
+        .chose_area
+          %ul.user_option
+            %li
+              %input{:type => "checkbox"}
+                %label Use Coupon Code
+            %li
+              %input{:type => "checkbox"}
+                %label Use Gift Voucher
+            %li
+              %input{:type => "checkbox"}
+                %label Estimate Shipping & Taxes
+          %ul.user_info
+            %li.single_field
+              %label Country:
+              %select
+                %option United States
+                %option Bangladesh
+                %option UK
+                %option India
+                %option Pakistan
+                %option Ucrane
+                %option Canada
+                %option Dubai
+            %li.single_field
+              %label Region / State:
+              %select
+                %option Select
+                %option Dhaka
+                %option London
+                %option Dillih
+                %option Lahore
+                %option Alaska
+                %option Canada
+                %option Dubai
+            %li.single_field.zip-field
+              %label Zip Code:
+              %input{:type => "text"}
+          %a.btn.btn-default.update{:href => ""} Get Quotes
+          %a.btn.btn-default.check_out{:href => ""} Continue
+      .col-sm-6
+        .total_area
+          %ul
+            %li
+              Cart Sub Total
+              %span $59
+            %li
+              Eco Tax
+              %span $2
+            %li
+              Shipping Cost
+              %span Free
+            %li
+              Total
+              %span $61
+          %a.btn.btn-default.update{:href => ""} Update
+          %a.btn.btn-default.check_out{:href => ""} Check Out
+/ /#do_action

@@ -25,6 +25,51 @@ angular.module('post')
   
   ])
 
+  .directive('ngReallyClick', [ () ->
+    restrict: 'A'
+    link: (scope, elem, attrs) ->
+      elem.bind('click', () ->
+        message = attrs.ngReallyMessage
+        if message and confirm(message)
+          scope.$apply(attrs.ngReallyClick))
+  
+  ])
+  .controller "CartShowCtrl", ["$scope", "$http",  ($scope, $http) ->
+    $http.get("line_items/1").success((data) ->
+      if data.message
+        $scope.message = data.message
+        
+      else
+        $scope.items = data.items
+        $scope.d = $scope.items[0]
+        console.log($scope.items)).error((data)->
+          console.log(data))
+
+    $scope.total = ->
+      total = 0
+      angular.forEach $scope.items, (item) ->
+        total += item.quantity * item.product.price
+        return
+
+      total
+    
+   
+   
+   
+    $scope.delete = (idx) ->
+      post_to_delete = $scope.items[idx]
+      $http.delete("/line_items/#{post_to_delete.id}").success((data) ->
+        if data.message is "Your post deleted"
+          
+          console.log(data, 'delete.data')
+          #post_to_delete.hideValue = true)
+          $scope.items.splice(idx, 1))
+            .error((error) -> console.log(error))
+
+
+    ]
+    
+
    .controller "CartCtrl", ["$scope", "$http", "Helpers", ($scope, $http, Helpers) ->
       $scope.add_to_cart = (product_id) ->
       
