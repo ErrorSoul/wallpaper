@@ -6,7 +6,7 @@ describe LineItem do
     let! (:cart) {FactoryGirl.create(:cart)}
     
   before do 
-    @line_item = cart.line_items.build(product: product, quantity: 3)
+    @line_item = cart.line_items.build(product: product, quantity: 3, order_id: 1)
     
     end
   subject {@line_item}
@@ -14,6 +14,9 @@ describe LineItem do
   it {should respond_to(:cart) }
   it {should respond_to(:product)}
   it {should respond_to(:quantity)}
+  it {should respond_to(:order_id)}
   it {should be_valid}
   
 end
+
+

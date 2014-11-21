@@ -105,14 +105,15 @@ end
          Product].each {|x| x.destroy_all}
     end
     it "should return success message" do
-     
-      patch :update, items: @update_list, format: :json
+      
+      #update need pass :id 
+      patch :update, id: 1,  items: @update_list, format: :json
       expected_json = {message: "Your line_item updated"}.to_json
       expect(response.body).to eq expected_json 
     end
     
     it "should return update quantity"  do
-      patch :update, items: @update_list, format: :json
+      patch :update, id: 1, items: @update_list, format: :json
       expect(@cart.line_items.first.quantity).to eq 3
     end
   end
