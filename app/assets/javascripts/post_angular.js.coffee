@@ -53,10 +53,10 @@ angular.module('post')
 
       total
     
-   
+    
     $scope.delete_notice = ->
       $scope.notice = false 
-
+    #update quantity in items
     $scope.update_cart = (callback, error_callback) ->
       update_items = [] 
       angular.forEach $scope.items, (item) ->
@@ -64,7 +64,12 @@ angular.module('post')
       $http({method: "PATCH", url: "/line_items/1", data: {items: update_items}})
         .success(callback).error(error_callback)
       
-      
+    #error callback
+    error_callback = (error) ->
+      console.log(error, "FFF")
+    $scope.t = ->
+      console.log("FFFFFFFFFFFFFFFFKKKK")
+    #for save cart    
     $scope.line_items_update = ->
       #success callback
       callback = (data) ->
@@ -73,15 +78,28 @@ angular.module('post')
           if $scope.notice
             $timeout($scope.delete_notice, 3000)
         else console.lod(data)
+      $scope.update_cart(callback, error_callback)
 
-      #error callback
-      error_callback = (error) ->
-        console.log(error, "FFF")
+    #for create order 
+    $scope.contact_form = () ->
+      #success callback
+      callback = (data) ->
+        if data.message is "Your line_item updated"
+          $scope.button_hide = true
+        else
+          console.log(data)
+
 
       $scope.update_cart(callback, error_callback)
 
-    $scope.contact_form = () ->
-      console.log("contact_form")
+    #create order 
+    $scope.create_order = (order) ->
+      callback = (data) ->
+        if data.message = "Your order saved"
+          $scope.button_hide = false
+          $scope.message = "Ваш заказ принят. Спасибо за покупку"
+      $http.post("/orders", order: order).success(callback)
+        .error(error_callback)
         
     $scope.delete = (idx) ->
       post_to_delete = $scope.items[idx]
@@ -99,8 +117,10 @@ angular.module('post')
     
 
    .controller "CartCtrl", ["$scope", "$http", "Helpers", ($scope, $http, Helpers) ->
+      $scope.t = ->
+        console.log("I am working too")
       $scope.add_to_cart = (product_id) ->
-      
+        console.log("Iam working now")
         Helpers.add_to_cart(product_id).success((data)->
           back_function = () ->
             $('#current_item').css({'background-color': 'initial'})
@@ -116,6 +136,7 @@ angular.module('post')
 
      
   .controller "PostCtrl", ["$scope", "$http", "Helpers", ($scope, $http, Helpers) ->
+    
     $scope.add = () ->
       
       

@@ -12,7 +12,7 @@
 
 
 body {
-  background-image: image-url('blog/bg.gif') ;
+  background-image: asset-url('blog/bg.gif') ;
   font-family: 'Roboto', sans-serif;
   background-color: $cream;
   position: relative;
@@ -332,6 +332,7 @@ ul.sub-menu {
 **************************/
 
 #footer {
+  
   background: #F0F0E9;
 }
 
@@ -2892,4 +2893,58 @@ cart_product {
 .bg-success{
     text-align: center;
     display: inline;
+}
+
+.empty-cart {
+    margin-bottom: 140px;
+}
+
+.cart-buttons-items{
+    margin-bottom: 30px;
+}
+
+.animate-hide {
+  -webkit-transition:all linear 0.7s;
+  transition:all linear 0.7s;
+  
+  opacity:1;
+  display: block !important;
+  height: 484px;
+  
+}
+
+.animate-hide.ng-hide {
+  line-height:0;
+  opacity:0;
+  height: 0;
+ 
+}
+
+
+.animate-button {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+  line-height:20px;
+  opacity:1;
+  
+  
+}
+
+.animate-button.ng-hide {
+  line-height:0;
+  opacity:0;
+  padding:0 10px;
+}
+
+.ng-valid {
+    border-color: green;
+}
+
+
+.push-bottom {
+    margin-bottom: 170px;
+}
+
+.ng-cloak {
+  display: none !important;
 }

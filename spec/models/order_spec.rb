@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'pry'
 describe Order do
   before do 
     @order = Order.new(name: "Danny",
@@ -44,4 +44,38 @@ describe Order do
       end
     end
   end
+
+
+  describe "add line_items from cart " do 
+    let! (:product_list) {FactoryGirl.create_list(:product, 7)}
+    let! (:cart) {FactoryGirl.create(:cart)}
+    let! (:order) {FactoryGirl.create(:order)}
+    
+    before  do
+      
+      product_list.each do |product|
+        cart.line_items.create!(product: product)
+      end
+    end
+    after(:all) do
+        [Product,  Cart, Order].map(&:destroy_all)
+      
+    end
+    
+    describe "cart's line_items " do 
+      
+      before {order.add_line_items_from_cart(cart)}
+     
+      it "should no line_items in cart" do
+          
+       
+        expect(cart.line_items.length).to eq 7
+        end
+      it "should have many line_items in order" do
+        
+        expect(order.line_items.length).to eq 7
+        end
+      end
+    
+  end      
 end

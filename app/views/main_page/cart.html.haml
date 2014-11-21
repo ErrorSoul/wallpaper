@@ -1,17 +1,18 @@
 
-.row(ng-app = "post")
+.container.push-bottom(ng-app = "post")
   .col-sm-12(ng-controller= "CartShowCtrl")
 
     %section#cart_items
       .container
         .breadcrumbs
+          
           %ol.breadcrumb
             %li
-              %a{:href => "#"} Home
-            %li.active Shopping Cart
+              =link_to "Decor", root_path
+            %li.active Корзина
         .col-sm-12(ng-if="message")
-          %h2 Ваша корзина пока пуста
-        .table-responsive.cart_info(ng-if="items")
+          %h2.empty-cart {{message}}
+        .table-responsive.cart_info(ng-hide="message")
           %table.table.table-condensed
             %thead
               %tr.cart_menu
@@ -37,54 +38,57 @@
                 %td.cart_quantity
                   .cart_quantity_button
 
-                    %input.cart_quantity_input{:autocomplete => "off", :name => "quantity", "ng-model" => "item.quantity", :type => "number", :value => "1", :min => "1"}
+                    %input.cart_quantity_input{:autocomplete => "off", :name => "quantity", "ng-model" => "item.quantity", :type => "number", :value => "1", :min => "1", "ng-disabled" => "button_hide"}
 
                 %td.cart_total
                   %p.cart_total_price {{item.quantity * item.product.price | currency: " "}}
                 %td.cart_delete
-                  %a.cart_quantity_delete(ng-really-message="Вы уверены?" ng-really-click="delete($index)")
+                  %a.cart_quantity_delete(ng-really-message="Вы уверены?" ng-really-click="button_hide || delete($index)" )
                     %i.fa.fa-times
 
         .col-sm-12(ng-show="notice") 
           %h3.bg-success {{notice}}
-        .col-sm-12(ng-if="items")
+        .col-sm-12.cart-buttons-items(ng-if="items" ng-hide="message")
           .col-sm-2.col-sm-offset-8.total-number
             %p Всего
           .col-sm-2.total-number
             %p#total
               {{total()|currency: " "}}
           .btn-group.pull-right.cart-button-group
-            %button.cart-button.btn.btn-default.update.pull-right(ng-click="line_items_update()" ng-disabled="items == 0")
+            %button.animate-button.cart-button.btn.btn-default.update.pull-right(ng-click="line_items_update()" ng-disabled="items == 0" ng-hide="button_hide")
               Сохранить
-            %button.cart-button.btn.btn-default.update(ng-click="x()" ng-disabled="items == 0")
+            %button.animate-button.cart-button.btn.btn-default.update(ng-click="contact_form()" ng-disabled="items == 0"  ng-hide="button_hide")
               Заказать 
 
 
 
 
     / /#cart_items
-    %section#do_action
-      .container(ng-show="FFF")
+    %section#do_action.ng-hide.animate-hide( ng-show="button_hide")
+      .container
         .heading
-          %h3 What would you like to do next?
-          %p Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.
+          %h3 Заполните, пожалуйста, форму
+          %p Не забудьте проверить перед отправкой
         .row
 
           .col-sm-6
             .total_area
-              %ul
-                %li
-                  Cart Sub Total
-                  %span $59
-                %li
-                  Eco Tax
-                  %span $2
-                %li
-                  Shipping Cost
-                  %span Free
-                %li
-                  Total
-                  %span $61
-              %a.btn.btn-default.update{:href => ""} Update
-              %a.btn.btn-default.check_out{:href => ""} Check Out
+              .col-sm-12
+                %form{:name => "form",:role => "form","ng-submit" => "form.$valid && create_order(order)", "novalidate" => true}
+                  .form-group
+                    %label{:for => "exampleInputName"} Ваше имя
+                    %input#exampleInputName.form-control{:placeholder => "Имя", :type => "text", "ng-model" => 'order.name', "ng-minlength" =>"2", 'required'=>true, 'name'=>'name'}
+                
+                  .form-group
+                    %label{:for => "exampleInputPhone"} Телефон
+                    %input#exampleInputPhone.form-control{:placeholder => "Ваш номер", :type => "tel", "ng-model" => 'order.phone', "required" => true, 'name' => "phone", "ng-minlength" =>"2"}
+                  .form-group.center-block
+                    %label{:for => "exampleInputAddress"} Адрес
+                    %textarea#exampleInputAddress.form-control{:placeholder => "Ваш адрес", :type => "text", "ng-model" => 'order.address', "required" => true, 'name' => "address", "ng-minlength" =>"7"}
+                  %button.btn.btn-default.update{:type => "submit" ,"ng-disabled"=>"form.$invalid"} Отправить
+            
+              .btn
+                
+              
+              
     / /#do_action

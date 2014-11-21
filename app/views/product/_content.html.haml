@@ -65,8 +65,10 @@
           %p= @product.description
           
   / /category-tab
-  .recommended_items(ng-app = "post")
+  .recommended_items(ng-app="post")
     / recommended_items
-    %h4.title_label.text-center(ng-controller="CartCtrl") Похожие товары
+    %h4.title_label.text-center
+      Похожие товары 
+      
     = render :partial => "carousel"
         

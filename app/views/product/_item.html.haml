@@ -1,14 +1,15 @@
 
-.col-sm-4
+.col-sm-4(ng-controller="CartCtrl") 
   .product-image-wrapper
     .single-products
       .productinfo.text-center
         =link_to image_tag(item.asset.url, :class => "product-image"), product_path(item)
         %h2= "#{number_to_currency(item.price, :unit => " ")}"
+        
         %p
           = link_to item.title, product_path(item)
         
         
-        %button.btn.btn-default.add-to-cart{:type => "button", :click => "add_to_cart(#{item.id})"}
+        %button.btn.btn-default.add-to-cart(type="button" ng-click="add_to_cart(#{item.id})")
           %i.fa.fa-shopping-cart>
           В корзину

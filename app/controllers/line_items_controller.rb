@@ -7,7 +7,7 @@ class LineItemsController < ApplicationController
   def show 
     @line_item = LineItem.includes(:product).where('cart_id = ?', @cart.id)
     if @line_item.empty?
-      render json: {message: "Baша корзина пуста"}
+      render json: {message: "Baша корзина пока пуста"}
     else
       render json: {items: @line_item},
       :include => :product
@@ -37,6 +37,7 @@ class LineItemsController < ApplicationController
   end
   
   def create
+    
     
     @product = Product.find(params[:line_item][:product_id])
     @line_item = @cart.add_product(@product, params[:line_item][:quantity])

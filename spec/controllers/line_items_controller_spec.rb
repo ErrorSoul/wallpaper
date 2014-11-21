@@ -6,9 +6,12 @@ describe LineItemsController do
   include CurrentCart
   let! (:product) {FactoryGirl.create(:product)}
   let! (:product1) {FactoryGirl.create(:product, title: "FFFfff")}
-  
+
+  describe "big test" do 
   after(:all) do
-    Cart.line_items.destroy_all
+    if @cart 
+      @cart.line_items.destroy_all
+    end
     Cart.destroy_all
     
     Product.destroy_all
@@ -49,7 +52,7 @@ end
       
       
       get :show, id: 1, format: :json
-      expected_json = {message: "Baша корзина пуста"}.to_json
+      expected_json = {message: "Baша корзина пока пуста"}.to_json
       expect(response.body).to eq expected_json 
     end
       
@@ -87,7 +90,7 @@ end
       
   end
 
-
+  end
   describe "update method" do 
     before(:each) do 
       set_cart
@@ -102,7 +105,7 @@ end
         
         [@cart.line_items,
          Cart, 
-         Product].each {|x| x.destroy_all}
+         Product].map(&:destroy_all)
     end
     it "should return success message" do
       
