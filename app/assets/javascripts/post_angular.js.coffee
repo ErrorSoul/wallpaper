@@ -58,7 +58,14 @@ angular.module('post')
 
       total
     
-    
+    #link_generator
+    $scope.link = (item) ->
+      if item.product_type is "Product"
+        x = "product"
+      else
+        x = "clues"
+      return "/#{x}/#{item.product.id}"
+      
     $scope.delete_notice = ->
       $scope.notice = false 
     #update quantity in items

@@ -26,12 +26,12 @@
 
               %tr.phone-listing.animate-repeat(ng-repeat="item in items" )
                 %td.cart_product
-                  %a{:href => "/product/{{item.product.id}}"}
+                  %a{:href => "{{link(item)}}"}
 
                     %img.cart-image{:alt => "",  :src => "{{item.product.asset.url}}"}/
                 %td.cart_description
                   %h4
-                    %a{:href => "/product/{{item.product.id}}"} {{item.product.title}}
+                    %a{:href => "{{link(item)}}"} {{item.product.title}}
                   %p Артикул: {{item.product.marking}}
                 %td.cart_price
                   %p {{item.product.price|currency:" "}}
