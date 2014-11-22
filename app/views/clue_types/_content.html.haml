@@ -1,6 +1,6 @@
 //сlue 
-.col-sm-9.padding-right
-  .features_items
+.col-sm-9.padding-right(ng-app="post")
+  .features_items(ng-controller="CartCtrl")
     / features_items
     .col-sm-12.middle-line
       .col-sm-6.center-block
@@ -14,7 +14,7 @@
               = link_to  image_tag(l.asset.url, :class => "img-responsive product-image"), clue_path(l)
               %h2= "#{number_to_currency(l.price, :unit => " ")}"
               %h5= link_to l.title, clue_path(l)
-              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{l.id})"}
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{l.id}, Clue)"}
                 %i.fa.fa-shopping-cart>
                 В Корзину
             .product-overlay
@@ -22,7 +22,7 @@
                 %p= l.vendor
                 %h2= "#{number_to_currency(l.price, :unit => " ")}"
                 %h5= link_to l.title, clue_path(l)
-                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{l.id})"}
+                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{l.id}, 'Clue')"}
                   %i.fa.fa-shopping-cart>
                   В Корзину
             .btn

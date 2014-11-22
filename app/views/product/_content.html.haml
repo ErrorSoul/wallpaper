@@ -64,12 +64,12 @@
         .col-sm-12
           
           %p= @product.description
-          
-  / /category-tab
-  .recommended_items(ng-app="post")
-    / recommended_items
-    %h4.title_label.text-center
-      Похожие товары 
-      
-    = render :partial => "carousel"
+  - if not @products.empty?        
+    / /category-tab
+    .recommended_items(ng-app="post")
+      / recommended_items
+      %h4.title_label.text-center
+        Похожие товары
+
+      = render :partial => "carousel"
         

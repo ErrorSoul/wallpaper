@@ -17,6 +17,7 @@ angular.module('post')
       line_item = {}
       line_item.product_id = product_id
       line_item.quantity = 1
+      console.log(product_type, "TYPE")
       if product_type
         line_item.product_type = product_type
       else
@@ -123,9 +124,9 @@ angular.module('post')
    .controller "CartCtrl", ["$scope", "$http", "Helpers", ($scope, $http, Helpers) ->
       $scope.t = ->
         console.log("I am working too")
-      $scope.add_to_cart = (product_id) ->
+      $scope.add_to_cart = (product_id, product_type) ->
         console.log("Iam working now")
-        Helpers.add_to_cart(product_id).success((data)->
+        Helpers.add_to_cart(product_id, product_type).success((data)->
           back_function = () ->
             $('#current_item').css({'background-color': 'initial'})
           
