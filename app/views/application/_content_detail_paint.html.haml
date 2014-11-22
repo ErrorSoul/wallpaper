@@ -1,0 +1,69 @@
+//areas помещения обоев рисунка
+.col-sm-9.padding-right(ng-app="post")
+  .features_items(ng-controller="PaintCtrl")
+    / features_items
+    .col-sm-12.middle-line
+      .col-sm-8.center-block
+        %h5.tit.text-center=  "Тип #{name_of}  «#{elm.name}»"
+    -if text_flag
+      -if elm.text
+        .col-sm-12.text-wrapper.last-part
+          %p= elm.text.html_safe
+    - elm_products.each do |p|
+      .col-sm-4
+        .product-image-wrapper
+          .single-products
+            .productinfo.text-center
+              = link_to  image_tag(p.asset.url, :class => "img-responsive product-image"), product_path(p)
+              %h2= "#{number_to_currency(p.price, :unit => " ")}"
+             
+              %h5= link_to p.title, product_path(p)
+              %a.btn.btn-default.add-to-cart{:href => "#"}
+                %i.fa.fa-shopping-cart>
+                В Корзину
+            .product-overlay
+              .overlay-content
+                %h2= "#{number_to_currency(p.price, :unit => " ")}"
+                %p= p.collection.name
+                %h5= link_to p.title, product_path(p)
+                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
+                  %i.fa.fa-shopping-cart>
+                  В Корзину
+            .btn
+
+
+    .row
+      #init-data.col-sm-12(data-init="#{elm_products.last.id if not elm_products.empty?}")
+    .col-sm-4.phone-listing(ng-repeat="product in products" ng-show="products")
+      .product-image-wrapper
+        .single-products
+          .productinfo.text-center
+            %img.img-responsive.product-image{:alt => "", :src => "{{product.asset.url}}"}/
+            %h2 
+              {{product.price|currency:" "}} 
+           
+            %p {{product.title}}
+            
+            %a.btn.btn-default.add-to-cart{:href => "#"}
+              %i.fa.fa-shopping-cart>
+                В Корзину
+
+          .product-overlay
+            .overlay-content
+             
+              
+              
+              %h2 {{product.price|currency: " "}} 
+              %p {{product.collection.name}}
+              %h5
+                %a{:href => "/product/{{product.id}}"} {{product.title}}
+              
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(product.id)"}
+                %i.fa.fa-shopping-cart>
+                  В Корзину
+          .btn
+      
+     
+  
+    %button.btn.under-footer.center-block(ng-click="add(#{mode}, #{elm.id})")
+      Показать еще {{x}}
