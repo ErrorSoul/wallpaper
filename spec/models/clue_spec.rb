@@ -12,7 +12,8 @@ describe Clue  do
                       vendor: "Factory of Clue",
                       country_id: 1,
                       clue_type_id: 2,
-                      marking: "112-3xld-233")
+                      marking: "112-3xld-233",
+                     description: "This is super puper clue for all types")
   end
 
 
@@ -22,7 +23,7 @@ describe Clue  do
   describe "clue model" do
      
 
-   %i(title price weight consumption 
+   %i(title price weight description consumption 
       vendor country_id clue_type_id 
       marking asset line_items).each do |i|
       it {should respond_to(i)}
@@ -34,7 +35,7 @@ describe Clue  do
 
 
   describe "when . attr not present" do
-    %i(title price weight consumption 
+    %i(title description price weight consumption 
        vendor country_id  clue_type_id marking).each do |x|
       describe "#{x} is nil" do 
         before {@clue.send("#{x}=", nil)}

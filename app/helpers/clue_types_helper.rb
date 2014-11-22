@@ -1,0 +1,2 @@
+module ClueTypesHelper
+end

@@ -1,0 +1,30 @@
+//сlue 
+.col-sm-9.padding-right
+  .features_items
+    / features_items
+    .col-sm-12.middle-line
+      .col-sm-6.center-block
+        %h5.tit.text-center= "Клей #{@c.name}"
+    - @c.clues.each do |l|
+      .col-sm-4
+        .product-image-wrapper
+          .single-products
+            .productinfo.text-center
+              
+              = link_to  image_tag(l.asset.url, :class => "img-responsive product-image"), clue_path(l)
+              %h2= "#{number_to_currency(l.price, :unit => " ")}"
+              %h5= link_to l.title, clue_path(l)
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{l.id})"}
+                %i.fa.fa-shopping-cart>
+                В Корзину
+            .product-overlay
+              .overlay-content
+                %p= l.vendor
+                %h2= "#{number_to_currency(l.price, :unit => " ")}"
+                %h5= link_to l.title, clue_path(l)
+                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{l.id})"}
+                  %i.fa.fa-shopping-cart>
+                  В Корзину
+            .btn
+            
+              

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121225833) do
+ActiveRecord::Schema.define(version: 20141122014051) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 20141121225833) do
     t.datetime "updated_at"
   end
 
+  create_table "clue_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "clues", force: true do |t|
     t.string   "title"
     t.string   "asset"
@@ -70,6 +76,7 @@ ActiveRecord::Schema.define(version: 20141121225833) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "consumption"
+    t.text     "description"
   end
 
   add_index "clues", ["clue_type_id"], name: "index_clues_on_clue_type_id"

@@ -25,7 +25,6 @@
                 = f.number_field(:quantity, :value => "1", :class => "number_integer")
                 = f.hidden_field(:product_id, :value=> "#{@product.id}")
                 = f.hidden_field(:product_type, :value=> "#{@product.class.name}")
-
                 
                 = f.submit "В Корзину",  :class=> "btn btn-fefaul cart"  
                   
@@ -49,13 +48,14 @@
           .col-sm-6
             %p
               %b Страна:
-              = @product.collection.label.country.name
+              = @product.country.name
             %p
-              %b Рисунок:
-              = @product.paint.name
+              %b Производитель:
+              = @product.vendor
             %p
-              %b Рекомендуемое помещение:
-              = @product.area.name
+              %b Расход:
+              = @product.consumption
+           
             
           .col-sm-6
             = render :partial => "product_detail"
@@ -64,12 +64,13 @@
         .col-sm-12
           
           %p= @product.description
-          
-  / /category-tab
-  .recommended_items(ng-app="post")
-    / recommended_items
-    %h4.title_label.text-center
-      Похожие товары 
-      
-    = render :partial => "carousel"
-        
+  - if not @products.empty?        
+    / /category-tab
+    .recommended_items(ng-app="post")
+      / recommended_items
+      %h4.title_label.text-center
+        Похожие товары
+
+      = render :partial => "carousel"
+
+

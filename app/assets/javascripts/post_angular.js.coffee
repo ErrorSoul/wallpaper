@@ -13,10 +13,14 @@ angular.module('post')
       
 ]
    .factory("Helpers", ["$http", ($http) ->
-    add_to_cart = (product_id) ->
+    add_to_cart = (product_id, product_type) ->
       line_item = {}
       line_item.product_id = product_id
       line_item.quantity = 1
+      if product_type
+        line_item.product_type = product_type
+      else
+        line_item.product_type = "Product"
       
       $http.post("/line_items", line_item: line_item)
 

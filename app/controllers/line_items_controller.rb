@@ -38,8 +38,8 @@ class LineItemsController < ApplicationController
   
   def create
     
-    
-    @product = Product.find(params[:line_item][:product_id])
+    @klass = params[:line_item][:product_type].constantize
+    @product = @klass.find(params[:line_item][:product_id])
     @line_item = @cart.add_product(@product, params[:line_item][:quantity])
 
 

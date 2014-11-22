@@ -1,0 +1,22 @@
+//сlue types
+.col-sm-9.padding-right
+  .features_items
+    / features_items
+    .col-sm-12.middle-line
+      .col-sm-6.center-block
+        %h5.tit.text-center Виды клея
+    - @c.each do |l|
+      .col-sm-4
+        .product-image-wrapper
+          .single-products.label-product
+            .productinfo.text-center
+              .img-responsive.product-image
+              %h2= link_to l.name, clue_type_path(l)
+              
+            .product-overlay
+              .overlay-content
+                
+                %h2= link_to l.name, clue_type_path(l)
+            .btn
+            
+              

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'clues/show'
+
   devise_for :slider_mains, ActiveAdmin::Devise.config
   get 'collections/show'
 
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   resources :types, only: :show
   resources :areas, only: :show
   resources :orders, only: :create
+  resources :clues, only: :show
+  resources :clue_types, only: [:show, :index]
   resources :line_items, only: [:create, :destroy,:update, :show], defaults: { format: 'json' }
   get 'about' => 'main_page#about'
   get 'delivery' => 'main_page#delivery'
