@@ -35,7 +35,7 @@ describe Clue  do
 
 
   describe "when . attr not present" do
-    %i(title description price weight consumption 
+    %i(title  price weight consumption 
        vendor country_id  clue_type_id marking).each do |x|
       describe "#{x} is nil" do 
         before {@clue.send("#{x}=", nil)}
