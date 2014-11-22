@@ -77,7 +77,7 @@ group :development, :test do
 
    # Guard
  
-  if Time.now > Time.new(2014,11,10)
+  if Time.now > Time.new(2014,12,12)
     gem 'guard', '~> 2.8'
   else
     # Freeze until 2014-11-10 - in case we forget to change back ;)

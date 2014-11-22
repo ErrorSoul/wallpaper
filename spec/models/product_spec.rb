@@ -85,6 +85,20 @@ describe Product do
     it {should be_invalid }
 
   end
+
+  describe "when marking is not uniq" do
+    before do 
+      @bad_product = @product.dup
+      @product.save
+      @bad_product.save 
+    end
+
+    it do 
+      
+      @bad_product.should be_invalid 
+    end
+  end
+
   #height and weight 
   describe "when height is not present" do
     before { @product.height = nil }

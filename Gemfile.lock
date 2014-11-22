@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 951f35d6799a2385d020d4a4303967c344a6bb0f
+  revision: 0d7d6014568fe3cdd3e1eefd169285d25c717b94
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -102,7 +102,7 @@ GEM
     formtastic (3.1.0)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
-    guard (2.8.2)
+    guard (2.7.3)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -308,7 +308,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   font-awesome-sass
-  guard (~> 2.8)
+  guard (= 2.7.3)
   guard-bundler (>= 1.0.0)
   guard-jasmine
   guard-rails (>= 0.4.0)
