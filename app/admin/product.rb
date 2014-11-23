@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
 ActiveAdmin.register Product do
 
-
+ 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :title, :collection_id, :asset, :type,:paint,  :description, :price, :weight, :height, :marking, :area_id
-  #
+  permit_params :title, :collection_id, :asset, :type_id, :paint_id,  :description, :price, :weight, :height, :marking, :area_id
+  
+  filter :title, label: "Название"
+  filter :marking, label: "Артикул"
+  filter :price, label: "Цена"
+  filter :weight, label: "Ширина"
+  filter :collection_id, label: "Коллекция", :as => :select, :collection => proc { Collection.all }
+  filter :type_id, label: "Тип", :as => :select, :collection => proc { Type.all }
+  filter :paint_id,  label: "Рисунок", :as => :select, :collection => proc { Paint.all }
+  filter :area_id,  label: "Помещение", :as => :select, :collection => proc { Area.all }
+  
   # or
   #
   # permit_params do
@@ -41,7 +50,6 @@ index do
     end
   
   
-  column "Последнее изменение", :updated_at
   actions
   end
 
@@ -60,6 +68,7 @@ index do
       f.input :price, :label => "Цена"
       f.input :height, :label => "Длина"
       f.input :weight, :label => "Ширина"
+      f.input :description, :label => "Описание"
     end
     f.actions
   end
@@ -77,7 +86,7 @@ index do
 
       
 
-      row "лейбл" do
+      row "бренд" do
 	x.collection.label.name 
 	end
 

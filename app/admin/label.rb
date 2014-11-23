@@ -9,7 +9,10 @@ ActiveAdmin.register Label do
   permit_params :name, :country_id, :asset
   
   filter :name, label: "Название"
-  filter :country_id, :as => :check_boxes, :collection => proc { Country.all }
+  filter :country_id, label: "Cтрана", :as => :check_boxes, :collection => proc { Country.all }
+  filter :collections, label: "Коллекция"
+  
+  
   index do 
 
   column "Haзвание", :name do |x| 
@@ -21,16 +24,17 @@ ActiveAdmin.register Label do
       end
     end
   
-  column "Последнее изменение", :updated_at
+  column "Страна", :country
   actions
   end
 
   ###### form 
   form(:html => { :multipart => true }) do |f|
     f.inputs "Team" do
-      f.input :country, :as => :select , :collection => Country.all
-      f.input :name
-      f.input :asset
+      f.input :country, label: "Страна", :as => :select , :collection => Country.all
+      f.input :name, label: "Название"
+
+      f.input :asset, label: "Картинка"
       #f.input :name , :as => :select , :collection => Label.all
     end
     f.actions

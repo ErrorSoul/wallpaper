@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
-ActiveAdmin.register Type do
-
- menu :parent => "Cвойства"
+ActiveAdmin.register Area do
+  menu :parent => "Cвойства"
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   permit_params :name, :text
-  
   filter :name, label: "Название"
   filter :text, label: "Текст"
 
@@ -16,7 +14,7 @@ ActiveAdmin.register Type do
   index do 
 
   column "Haзвание", :name do |x| 
-    link_to x.name, admin_type_path(x)
+    link_to x.name, admin_area_path(x)
     end
 
   column "Текст", :text
@@ -53,6 +51,3 @@ ActiveAdmin.register Type do
     end
   end
 end
-
-
-

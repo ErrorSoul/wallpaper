@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class LineItemsController < ApplicationController
-  require 'pry'
+ 
   include CurrentCart
   before_action :set_cart, only: [:create, :show, :destroy]
   

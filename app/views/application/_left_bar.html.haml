@@ -50,7 +50,7 @@
               -cache ['paints', @paints] do
           
                 - @paints.each do |x|
-                  -cache ['paints', @paints] do
+                  -cache ['entry_paint', @paints] do
                     %li
                       =link_to x.name.mb_chars.capitalize.to_s, paint_path(x)
            

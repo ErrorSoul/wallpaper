@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
 ru:
+
+  
   
   
     
     dashboard: "Панель управления"
     dashboard_welcome:
-      welcome: "Добро пожаловать в Active Admin. Это стандартная страница управления сайтом."
+      welcome: "Добро пожаловать dddв Active Admin. Это стандартная страница управления сайтом."
       call_to_action: "Чтобы добавить сюда что-нибудь загляните в 'app/admin/dashboard.rb'"
     view: "Открыть"
     edit: "Изменить"
@@ -89,6 +92,7 @@ ru:
       errors:
         empty_text: "Комментарий не сохранен, текст не должен быть пустым."
     devise:
+      
       username:
         title: "Имя пользователя"
       email:
@@ -131,3 +135,4 @@ ru:
     formtastic:
 
        create: 'Сохранить %{model}'
+

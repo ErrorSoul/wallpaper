@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 0d7d6014568fe3cdd3e1eefd169285d25c717b94
+  revision: 80229af78f0081575e513d965ca8ce0e170a874a
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0, >= 1.0.2)
@@ -99,7 +99,7 @@ GEM
     font-awesome-sass (4.2.2)
       sass (~> 3.2)
     formatador (0.2.5)
-    formtastic (3.1.0)
+    formtastic (3.1.1)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.1.1)
     guard (2.7.3)

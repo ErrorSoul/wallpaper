@@ -6,7 +6,11 @@ ActiveAdmin.register Collection do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   permit_params :name, :label_id, :asset
-  #
+  
+
+  filter :name, label: "Название"
+  filter :label_id, label: "Бренд", :as => :select, :collection => proc { Collection.all }
+  filter :products, label: "Обои"
   # or
   #
   # permit_params do
@@ -26,16 +30,16 @@ index do
       end
     end
   
-  column "Последнее изменение", :updated_at
+  column "Бренд", :label
   actions
   end
 
 ###### form 
   form(:html => { :multipart => true }) do |f|
     f.inputs "Team" do
-      f.input :label, :as => :select , :collection => Label.all
-      f.input :name
-      f.input :asset
+      f.input :label, label: "Бренд", :as => :select , :collection => Label.all
+      f.input :name, label: "Название"
+      f.input :asset, label: "Картинка"
       
     end
     f.actions
@@ -54,17 +58,18 @@ index do
 	x.label.country.name 
 	end
 
-      row "лейбл" do
+      row "бренд" do
 	link_to x.label.name, admin_label_path(x.label)
 	end
 
       
       row "Картинка" do
+        
           image_tag(x.asset.url)
       
       end
       table_for x.products  do 
-        column "Коллекции", :name  do |z|
+        column "Обои", :name  do |z|
           link_to z.title, admin_product_path(z)
         end
         column "Картинка", :asset do |z|

@@ -6,7 +6,11 @@ ActiveAdmin.register Country do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   permit_params :name, :asset
+  
 
+
+  filter :name, label: "Название"
+  filter :labels, label: "Бренды"
   index do 
 
   column "Haзвание", :name do |x| 
@@ -25,8 +29,8 @@ ActiveAdmin.register Country do
 
   form(:html => { :multipart => true }) do |f|
     f.inputs "Team" do
-      f.input :name
-      f.input :asset
+      f.input :name, :label => "Названи"
+      f.input :asset, :label => "Картинка"
       #f.input :name , :as => :select , :collection => Label.all
     end
     f.actions

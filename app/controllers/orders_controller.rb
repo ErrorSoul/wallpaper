@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  require 'pry'
+ 
   include CurrentCart
   before_action :set_cart
   
