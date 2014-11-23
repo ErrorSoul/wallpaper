@@ -1,4 +1,5 @@
 class Clue < ActiveRecord::Base
+  
   belongs_to :country
   belongs_to :clue_type
   validates :title, :price,:weight, :consumption, presence: true
@@ -9,5 +10,8 @@ class Clue < ActiveRecord::Base
   has_many :line_items, as: :product
    validates :price, :weight,  numericality: {greater_than_or_equal_to: 0.01}
   mount_uploader :asset, AssetUploader
+
+  
+  
   
 end

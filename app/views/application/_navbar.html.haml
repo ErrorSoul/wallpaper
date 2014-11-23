@@ -78,6 +78,8 @@
                
           .col-sm-3.col-xs-3.pull-right.search_container
             .search_box.pull-right
-              %input(type="text" placeholder="Поиск")
+              = form_tag(product_index_path, :method => "get", id: "search-form") do
+                = text_field_tag :search, params[:search], placeholder: "артикул или название"
+                %button.btn.btn-default.search-button(type="submit") Поиск
           
               

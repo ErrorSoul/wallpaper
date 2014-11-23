@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'pry'
 describe Clue  do
+ 
   
  
   before do 
@@ -91,6 +92,21 @@ describe "numeric test" do
   end
 
 
+    end
+  end
+
+  describe "search test" do
+    before {@clue.save}
+    describe "should return product" do
+      it "for marking" do
+        #pry.binding
+        z = Clue.search_q(@clue.marking).first
+        z.should eq @clue
+      end
+      it "for title" do
+        z = Clue.search_q(@clue.title).first
+        z.should eq @clue
+      end
     end
   end
   

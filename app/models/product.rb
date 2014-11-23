@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  
+  
   validates :title, :description, :marking,  presence: true
   validates :type_id, :collection_id, :paint_id, presence: true
   validates  :title,  length: {maximum: 100,
