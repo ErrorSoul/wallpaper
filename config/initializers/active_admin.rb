@@ -7,11 +7,11 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Домашний декор"
+  #config.site_title = "Домашний декор"
   
-  I18n.locale = :ru
-  I18n.load_path += Dir[File.expand_path("../../locales/**/*.yml", __FILE__)]
-  I18n.reload!
+  #I18n.locale = :ru
+  #I18n.load_path += Dir[File.expand_path("../../locales/**/*.yml", __FILE__)]
+  #I18n.reload!
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

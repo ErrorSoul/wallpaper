@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :line_items, only: [:create, :destroy,:update, :show], defaults: { format: 'json' }
   get 'about' => 'main_page#about'
   get 'delivery' => 'main_page#delivery'
+  get 'contact'  => 'main_page#contact'
   get 'more/:id' => "main_page#more"
 
   get 'more_type/:mode_id/:elem_id/:id' => "main_page#more_type"

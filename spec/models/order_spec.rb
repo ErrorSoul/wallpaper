@@ -75,6 +75,7 @@ describe Order do
         expect(order.line_items.length).to eq 7
         end
       end
+    #total
     describe "order total" do 
       before do 
         order.add_line_items_from_cart(cart)

@@ -1,7 +1,7 @@
 class MainPageController < ApplicationController
   
   
-  before_action :set_need_attr, only: [:index, :about, :delivery]
+  before_action :set_need_attr, only: [:index, :about, :delivery, :contact]
   def index
 
     @product = Product.includes(:type,:paint, :collection => [:label => :country]).limit(6)

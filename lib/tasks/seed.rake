@@ -3,11 +3,12 @@ namespace :db do
   desc "Fill database with type of wp"
   task populate: :environment do
     
-    make_types
-    make_areas
-    make_paints
-    fill_base
-    make_admin 
+    #make_types
+    #make_areas
+    #make_paints
+    #fill_base
+    make_clues
+    #make_admin 
     
   end
 end
@@ -83,6 +84,33 @@ end
 def make_admin
   AdminUser.create!(email: "admin@example.com",
                     password: "password")
+end
+
+
+
+def make_clues 
+  c = ["виниловый", "флизелиновый", "для стеклообоев"]
+  country = Country.all.map(&:id)
+  c.each do |name|
+    ClueType.create!(name: name)
+  end
+
+  ClueType.all.each do |x| 
+    3.times do |z|
+      x.clues.create!(title: Faker::Address.state,
+                   country_id: country.sample,
+                   description: Faker::Lorem.sentence(3),
+                   vendor: Faker::Address.state,
+                   consumption: "0.5/1 kg",
+                   weight: 0.8,
+                   price: Faker::Commerce.price,
+                   marking: Faker::Code.isbn,
+                   asset: File.open(File.join("app", ActionController::Base.helpers.asset_path("assets/images/blog/#{z+1}.jpg")))
+                   
+                   )
+
+    end
+  end
 end
 
 def make_types

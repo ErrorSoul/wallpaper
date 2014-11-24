@@ -5,7 +5,9 @@ ActiveAdmin.register Product do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  permit_params :title, :collection_id, :asset, :type_id, :paint_id,  :description, :price, :weight, :height, :marking, :area_id
+  permit_params :title, :collection_id, :asset, 
+                :type_id, :paint_id,  :description, 
+                :price, :weight, :height, :marking, :area_id
   
   filter :title, label: "Название"
   filter :marking, label: "Артикул"

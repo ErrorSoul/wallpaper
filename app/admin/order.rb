@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 ActiveAdmin.register Order do
+  require "pry"
 
   filter :name, label: "Клиент"
   filter :phone, label: "Телефон"
@@ -32,6 +33,8 @@ ActiveAdmin.register Order do
   column "Адрес", :address do |x| 
       x.address
     end
+
+    column "Сумма", :total
   
     column "Принят", :created_at
   
@@ -57,9 +60,39 @@ ActiveAdmin.register Order do
         x.address 
       end
 
+      row "Сумма" do
+        x.total
+      end
+
       row "Дата создания" do 
         x.created_at
       end
+
+
+      table_for x.line_items  do |z|
+        
+        
+          column "Товар", :name  do |e|
+            link_to e.product.title, [:admin, e.product]
+          end
+          column "Картинка", :asset do |e|
+            div :class => "thumb" do
+              image_tag(e.product.asset.url)
+            end
+          end
+       
+        
+        column "Количество", :quantity 
+
+        column "Цена товара" do |e|
+          e.product.price
+        end
+      end
+
+          
+          
+       
+          
 
       
       

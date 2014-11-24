@@ -15,8 +15,8 @@
         
         %span.col-sm-12
           .row
-            %span.col-sm-2=   "#{number_to_currency(@product.price, :unit => " ")}"
-            .col-sm-10
+            %span.col-sm-3= @product.price
+            .col-sm-9
 
               = form_for LineItem.new,format: :js,  remote: true, :html =>{:class => "form-inline"}  do |f|
 
