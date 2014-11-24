@@ -3,6 +3,7 @@ FactoryGirl.define do
     name "MyString"
     address "MyText"
     phone "MyString"
+    total  0
   end
 
 end

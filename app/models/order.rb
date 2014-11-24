@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  before_save :calculator
   validates :name, :address, :phone, presence: true
   validates :name, :address, :phone, length: {minimum: 3}
   has_many :line_items, dependent: :destroy
@@ -11,5 +12,10 @@ class Order < ActiveRecord::Base
     end
   end
       
-
+  def calculator
+    
+    self.total = line_items.to_a.sum{|l| l.product.price * l.quantity}
+    
+  end
+    
 end

@@ -11,6 +11,7 @@ describe Order do
   it {should respond_to(:address)}
   it {should respond_to(:phone)}
   it {should respond_to(:line_items)}
+  it {should respond_to(:total)}
   it {should be_valid}
 
 
@@ -54,7 +55,7 @@ describe Order do
     before  do
       
       product_list.each do |product|
-        cart.line_items.create!(product: product)
+        cart.line_items.create!(product: product, quantity: 2)
       end
     end
     after(:all) do
@@ -67,15 +68,28 @@ describe Order do
       before {order.add_line_items_from_cart(cart)}
      
       it "should no line_items in cart" do
-          
-       
+        
         expect(cart.line_items.length).to eq 7
         end
       it "should have many line_items in order" do
-        
         expect(order.line_items.length).to eq 7
         end
       end
+    describe "order total" do 
+      before do 
+        order.add_line_items_from_cart(cart)
+        
+        order.save
+         
+      end
+      it "should return product sum" do
+        
+       
+        summa = product_list.sum{|x| x.price * 2}
+        expect(order.total.to_i).to eq summa.to_i
+      end
+    end
+    
     
   end      
 end
