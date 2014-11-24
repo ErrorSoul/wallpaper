@@ -96,7 +96,7 @@ def make_clues
   end
 
   ClueType.all.each do |x| 
-    3.times do |z|
+    8.times do |z|
       x.clues.create!(title: Faker::Address.state,
                    country_id: country.sample,
                    description: Faker::Lorem.sentence(3),
@@ -105,7 +105,7 @@ def make_clues
                    weight: 0.8,
                    price: Faker::Commerce.price,
                    marking: Faker::Code.isbn,
-                   asset: File.open(File.join("app", ActionController::Base.helpers.asset_path("assets/images/blog/#{z+1}.jpg")))
+                   asset: File.open(File.join("app", ActionController::Base.helpers.asset_path("assets/images/blog/#{(z+1)%3}.jpg")))
                    
                    )
 

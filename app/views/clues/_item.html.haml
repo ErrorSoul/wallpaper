@@ -10,6 +10,6 @@
           = link_to item.title, clue_path(item)
         
         
-        %button.btn.btn-default.add-to-cart(type="button" ng-click="add_to_cart(#{item.id, "Clue"})")
+        %button.btn.btn-default.add-to-cart(type="button" ng-click="add_to_cart(#{item.id}, 'Clue')")
           %i.fa.fa-shopping-cart>
           В корзину
