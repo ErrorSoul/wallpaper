@@ -1,22 +1,5 @@
 %header#header
-  / header
-  .header_top
-    / header_top
-    .container
-      .row
-        .col-sm-6
-          .contactinfo
-            %ul.nav.nav-pills
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-phone
-                  +7 903 186 52 91
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-envelope
-                  info@vash-site.com
-       
-  / /header_top
+  
 		
   .header-middle
     / header-middle
@@ -25,13 +8,14 @@
         .col-sm-4
           .logo.pull-left
             %a{:href => "/"}
-              %img{:alt => "", :src => asset_path("logo/16.png") }/
+              %img{:alt => "", :src => asset_path("logo/17.png") }/
         .col-sm-5.pull-right
           .logo.pull-right
             %h4.phone_number 
               %b
-                %i.fa.fa-phone
-                8 903 186 52 91
+                %i.fa.fa-phone.phone-size
+                %img{:alt => "", :class =>"margin-logo", :src => asset_path("logo/phone.png") }/
+                %br с 9.00-21.00 без выходных
             
         
    
