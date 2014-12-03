@@ -34,14 +34,16 @@
                     %a{:href => "{{link(item)}}"} {{item.product.title}}
                   %p Артикул: {{item.product.marking}}
                 %td.cart_price
-                  %p {{item.product.price|currency:" "}}
+                  %p 
+                    {{item.product.price|currency:" "}}
                 %td.cart_quantity
                   .cart_quantity_button
 
                     %input.cart_quantity_input{:autocomplete => "off", :name => "quantity", "ng-model" => "item.quantity", :type => "number", :value => "1", :min => "1", "ng-disabled" => "button_hide"}
 
                 %td.cart_total
-                  %p.cart_total_price {{item.quantity * item.product.price | currency: " "}}
+                  %p.cart_total_price 
+                    {{item.quantity * item.product.price | currency: " "}}
                 %td.cart_delete
                   %a.cart_quantity_delete(ng-really-message="Вы уверены?" ng-really-click="button_hide || delete($index)" )
                     %i.fa.fa-times

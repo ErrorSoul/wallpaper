@@ -15,7 +15,10 @@
         
         %span.col-sm-12
           .row
-            %span.col-sm-3= @product.price
+            %span.col-sm-3
+             
+              = @product.price
+              
             .col-sm-9
 
               = form_for LineItem.new,format: :js,  remote: true, :html =>{:class => "form-inline"}  do |f|

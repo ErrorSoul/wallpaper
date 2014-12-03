@@ -4,7 +4,9 @@
     .single-products
       .productinfo.text-center
         =link_to image_tag(item.asset.url, :class => "product-image"), clue_path(item)
-        %h2= "#{number_to_currency(item.price, :unit => " ")}"
+        %h2
+          %span.rouble Р
+          = "#{number_to_currency(item.price, :unit => " ")}"
         
         %p
           = link_to item.title, clue_path(item)

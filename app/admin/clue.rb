@@ -23,7 +23,7 @@ ActiveAdmin.register Clue do
   index do 
 
   column "Haзвание", :title do |x| 
-    link_to x.title, admin_product_path(x)
+    link_to x.title, admin_clue_path(x)
     end
   
   column "Картинка", :asset do |x|

@@ -10,32 +10,19 @@
           .single-products
             .productinfo.text-center
               %img.img-responsive.product-image{:alt => "#{p.title}", :src => p.asset.url}/
-              %h2= "#{number_to_currency(p.price, :unit => " ")}"
+              %h2
+                %span.rouble Р
+                = "#{number_to_currency(p.price, :unit => "")}"
+            
              
               %p= "#{p.weight} x #{p.height}"
-              %p= p.title
+              %p
+                =link_to p.title, product_path(p)
                 
-              %a.btn.btn-default.add-to-cart{:href => "#"}
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
                 %i.fa.fa-shopping-cart>
                   В Корзину
-            .product-overlay
-              .overlay-content
-                %h2 Страна
-                = p.collection.label.country.name
-                %h2 Бренд
-                =link_to p.collection.label.name, label_path(p.collection.label)
-                %h2 Коллекция 
-                =link_to p.collection.name, collection_path(p.collection)
-                
-                %h2=  "#{number_to_currency(p.price, :unit => " ")}"
-                %h2
-                  =link_to p.title, product_path(p)
-                %p= p.marking
-                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
-                  %i.fa.fa-shopping-cart>
-                    В Корзину
-          .choose
-            %ul.nav.nav-pills.nav-justified
+            
     .row
       #init-data.col-sm-12(data-init="#{@product.last.id}")
     .col-sm-4.phone-listing(ng-init="init_id=#{@product.last.id}" ng-repeat="post in posts" ng-show="posts")
@@ -43,33 +30,17 @@
         .single-products
           .productinfo.text-center
             %img.img-responsive.product-image{:alt => "", :src => "{{post.asset.url}}"}/
-            %h2 
+            %h2
+              %span.rouble Р
               {{post.price|currency:" "}} 
             %p {{post.weight}} x {{post.height}}
-            %p {{post.title}}
-            %a.btn.btn-default.add-to-cart
+            %p 
+              %a{:href => "/product/{{post.id}}"} {{post.title}}
+            %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(post.id)"}
               %i.fa.fa-shopping-cart>
                 В Корзину
 
-          .product-overlay
-            .overlay-content
-              %h2 Страна
-              {{post.collection.label.country.name}}
-              %h2 Бренд
-              %a{:href => "/labels/{{post.collection.label.id}}"} 
-                {{post.collection.label.name }}
-              %h2 Коллекция 
-              %a{:href => "/collections/{{post.collection_id}}"}
-                {{post.collection.name}}
-              
-              %h2 {{post.price|currency:" "}} 
-              %h2
-                %a{:href => "/product/{{post.id}}"} {{post.title}}
-              %p {{post.marking}}
-              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(post.id)"}
-                %i.fa.fa-shopping-cart>
-                  В Корзину
-          .btn
+         
       
      
   

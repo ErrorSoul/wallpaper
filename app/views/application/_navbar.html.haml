@@ -62,7 +62,7 @@
                   %i.fa.fa-shopping-cart
                   Корзина
                
-          .col-sm-3.col-xs-3.pull-right.search_container
+          .col-sm-4.col-xs-4.pull-right.search_container
             .search_box.pull-right
               = form_tag(product_index_path, :method => "get", id: "search-form") do
                 = text_field_tag :search, params[:search], placeholder: "артикул или название"

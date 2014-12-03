@@ -15,21 +15,15 @@
           .single-products
             .productinfo.text-center
               = link_to  image_tag(p.asset.url, :class => "img-responsive product-image"), product_path(p)
-              %h2= "#{number_to_currency(p.price, :unit => " ")}"
+              %h2
+                %span.rouble Р
+                = "#{number_to_currency(p.price, :unit => " ")}"
              
               %h5= link_to p.title, product_path(p)
-              %a.btn.btn-default.add-to-cart{:href => "#"}
+              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
                 %i.fa.fa-shopping-cart>
                 В Корзину
-            .product-overlay
-              .overlay-content
-                %h2= "#{number_to_currency(p.price, :unit => " ")}"
-                %p= p.collection.name
-                %h5= link_to p.title, product_path(p)
-                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
-                  %i.fa.fa-shopping-cart>
-                  В Корзину
-            .btn
+            
 
 
     .row
@@ -39,29 +33,17 @@
         .single-products
           .productinfo.text-center
             %img.img-responsive.product-image{:alt => "", :src => "{{product.asset.url}}"}/
-            %h2 
+            %h2
+              %span.rouble Р
               {{product.price|currency:" "}} 
            
             %p {{product.title}}
             
-            %a.btn.btn-default.add-to-cart{:href => "#"}
+            %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(product.id)"}
               %i.fa.fa-shopping-cart>
                 В Корзину
 
-          .product-overlay
-            .overlay-content
-             
-              
-              
-              %h2 {{product.price|currency: " "}} 
-              %p {{product.collection.name}}
-              %h5
-                %a{:href => "/product/{{product.id}}"} {{product.title}}
-              
-              %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(product.id)"}
-                %i.fa.fa-shopping-cart>
-                  В Корзину
-          .btn
+         
       
      
   
