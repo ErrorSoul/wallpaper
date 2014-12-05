@@ -8,6 +8,7 @@ module SetModels
     @label = Label.all
     @paints = Paint.all
     @areas = Area.all
+    @tip = Tip.all.sample
     #@collection= Collection.all.limit(10)
   end
 end

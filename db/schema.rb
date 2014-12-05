@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124001159) do
+ActiveRecord::Schema.define(version: 20141205123538) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -162,6 +162,12 @@ ActiveRecord::Schema.define(version: 20141124001159) do
   create_table "slider_mains", force: true do |t|
     t.text   "text"
     t.string "asset"
+  end
+
+  create_table "tips", force: true do |t|
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "types", force: true do |t|

@@ -125,6 +125,11 @@ ru:
             other: "Заказы"
             many: "Заказы"
             few: "Заказы"
+        tip:
+            one: "Совет" 
+            other: "Coвет"
+            many: "Coвет"
+            few: "Совет"
       attributes:
         user:
           first_name: "Nombres"
