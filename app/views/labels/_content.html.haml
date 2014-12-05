@@ -14,8 +14,4 @@
               = link_to  image_tag(col.asset.url, :class => "img-responsive product-image"), collection_path(col)
              
               %h5= link_to col.name, collection_path(col)
-            .product-overlay
-              .overlay-content
-                %p= @l.name
-                %h5= link_to col.name, collection_path(col)
-            .btn
+           

@@ -9,7 +9,7 @@
   =link_to @product.collection.label.name, label_path(@product.collection.label)
 %p
   %b Коллекция:
-  =link_to @product.collection.name, collection_path(@product.collection.label)
+  =link_to @product.collection.name, collection_path(@product.collection)
 %p
   %b Размер:
   = "#{@product.weight} x #{@product.height}"

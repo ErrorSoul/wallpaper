@@ -73,14 +73,17 @@ ru:
             one: "Обои"
             many: "Обои"
             other: "Обои"
+            few: "Обои"
         label:
             one: "Бренд"
             other: "Бренды"
             many: "Бренды"
+            few: "Бренды"
         collection:
             one: "Коллекцию"
             many: "Коллекции"
             other: "Коллекции"
+            few: "Коллекции"
        
         country:
             one: "Cтрану"

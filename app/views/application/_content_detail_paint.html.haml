@@ -17,7 +17,7 @@
               = link_to  image_tag(p.asset.url, :class => "img-responsive product-image"), product_path(p)
               %h2
                 %span.rouble Р
-                = "#{number_to_currency(p.price, :unit => " ")}"
+                = "#{number_to_currency(p.price, :unit => " ", :precision => 0)}"
              
               %h5= link_to p.title, product_path(p)
               %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
@@ -35,7 +35,7 @@
             %img.img-responsive.product-image{:alt => "", :src => "{{product.asset.url}}"}/
             %h2
               %span.rouble Р
-              {{product.price|currency:" "}} 
+              {{product.price|number:0}} 
            
             %p {{product.title}}
             
@@ -46,6 +46,6 @@
          
       
      
-  
-    %button.btn.under-footer.center-block(ng-click="add(#{mode}, #{elm.id})")
-      Показать еще {{x}}
+    .col-sm-12
+      %button.btn.under-footer.center-block(ng-click="add(#{mode}, #{elm.id})")
+        Показать еще {{x}}

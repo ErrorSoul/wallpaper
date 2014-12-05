@@ -12,7 +12,7 @@
               %img.img-responsive.product-image{:alt => "#{p.title}", :src => p.asset.url}/
               %h2
                 %span.rouble Р
-                = "#{number_to_currency(p.price, :unit => "")}"
+                = "#{number_to_currency(p.price, :unit => "", :precision => 0)}"
             
              
               %p= "#{p.weight} x #{p.height}"
@@ -24,15 +24,15 @@
                   В Корзину
             
     .row
-      #init-data.col-sm-12(data-init="#{@product.last.id}")
-    .col-sm-4.phone-listing(ng-init="init_id=#{@product.last.id}" ng-repeat="post in posts" ng-show="posts")
+      #init-data.col-sm-12(data-init="#{@product.last.id if not @product.empty? }")
+    .col-sm-4.phone-listing(ng-init="init_id=#{@product.last.id if not @product.empty? }" ng-repeat="post in posts" ng-show="posts")
       .product-image-wrapper
         .single-products
           .productinfo.text-center
             %img.img-responsive.product-image{:alt => "", :src => "{{post.asset.url}}"}/
             %h2
               %span.rouble Р
-              {{post.price|currency:" "}} 
+              {{post.price|number:0}} 
             %p {{post.weight}} x {{post.height}}
             %p 
               %a{:href => "/product/{{post.id}}"} {{post.title}}
@@ -43,7 +43,7 @@
          
       
      
-  
-    %button.btn.under-footer.center-block(ng-click="add()")
-      Показать еще {{x}}
+    .col-sm-12
+      %button.btn.under-footer.center-block(ng-click="add()")
+        Показать еще {{x}}
     

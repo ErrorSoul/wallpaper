@@ -17,7 +17,7 @@
           .row
             %span.col-sm-3
              
-              = @product.price
+              =  "#{number_to_currency(@product.price, :unit => " " , :precision => 0, delimiter: "")}"
               
             .col-sm-9
 

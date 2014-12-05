@@ -13,21 +13,13 @@
           .single-products
             .productinfo.text-center
               = link_to  image_tag(p.asset.url, :class => "img-responsive product-image"), product_path(p)
-              %h2= "#{number_to_currency(p.price, :unit => " ")}"
+              %h2
+                %span.rouble Р
+                = "#{number_to_currency(p.price, :unit => " ", :precision => 0)}"
              
               %h5= link_to p.title, product_path(p)
               %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
                 %i.fa.fa-shopping-cart>
                   В Корзину
               
-            .product-overlay
-              .overlay-content
-                %h2= "#{number_to_currency(p.price, :unit => " ")}"
-                %p= @col.name
-                %h5= link_to p.title, product_path(p)
-                
-                %a.btn.btn-default.add-to-cart{"ng-click" => "add_to_cart(#{p.id})"}
-                  %i.fa.fa-shopping-cart>
-                    В Корзину
-            
-            .btn
+           
