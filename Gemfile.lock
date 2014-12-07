@@ -86,6 +86,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -317,6 +318,7 @@ DEPENDENCIES
   childprocess (= 0.3.6)
   coffee-rails (~> 4.0.0)
   devise
+  dynamic_sitemaps
   factory_girl_rails
   faker
   font-awesome-sass

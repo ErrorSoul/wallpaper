@@ -1,4 +1,4 @@
-- meta title: " #{@product.title}", description: "В нашем интернет магазине недорогие обои или клей  #{@product.title}", keywords: ["купить обои #{@product.title} ","купить клей", "обои онлайн", "обои недорого купить" , "#{@product.title}", "#{@product.title}"],  price: @product.price, marking: @product.marking,  type:  @product.class.to_s.eql?("Product") ? @product.type.name : @product.clue_type.name 
+- meta title: " #{@product.title}", description: @product.description.empty? ? "В нашем интернет магазине вы всегда можете купить #{@product.title}": truncate("#{@product.description}", length: 160), keywords: ["купить обои #{@product.title} ","купить клей", "обои онлайн", "обои недорого купить" , "#{@product.title}", "#{@product.title}"],  price: @product.price, marking: @product.marking,  type:  @product.class.to_s.eql?("Product") ? @product.type.name : @product.clue_type.name 
 .col-sm-9.padding-right
   .product-details
     / product-details
