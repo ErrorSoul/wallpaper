@@ -26,8 +26,9 @@ Rails.application.routes.draw do
 
   get 'more_type/:mode_id/:elem_id/:id' => "main_page#more_type"
   #robot.txt
-  get '/robots.txt' => 'main_page#robots'
-  get "sitemap.xml" => "main_page#sitemap", format: :xml, as: :sitemap
+  #get '/robots.txt' => 'main_page#robots'
+  get "sitemap.xml" => "main_page#sitemap",  defaults: {format: :xml}, as: :sitemap
+  get "robots.txt" => "main_page#robots", defaults: {format: 'txt'}, as: :robots
   get 'cart' => "main_page#cart"
   get '/*s/' => redirect('/')
 
